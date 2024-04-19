@@ -19,12 +19,30 @@
             margin-right: 15px;
         }
 
-        .sidebar .table caption {
+        .sidebar .table .caption {
             color: #888888;
             font-weight: bold;
+            text-align: center;
+            margin-bottom: -15px;
         }
 
-        .sidebar .table a {
+        .sidebar .table .body {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-between;
+        }
+
+        .sidebar .table .body .left {
+            text-align: left;
+            margin-right: auto;
+        }
+
+        .sidebar .table .body .right {
+            text-align: right;
+            margin-left: auto;
+        }
+
+        .sidebar .table .body a {
             color: #F8F8F8;
             margin: 15px;
             text-decoration: none;
@@ -98,18 +116,18 @@
 </head>
 <body>
 <div class="sidebar">
-    <--sidebar>
+<--sidebar>
 </div>
 <div class="content">
     <div class="names">
-        <--names>
+<--names>
     </div>
     <h2>Описание</h2>
     <div class="description"><div class="border-margin"><--description></div></div>
     <h2>Применение</h2>
-    <--usages>
+<--usages>
     <h2>Примеры</h2>
-    <--examples>
+<--examples>
 </div>
 </body>
 </html>

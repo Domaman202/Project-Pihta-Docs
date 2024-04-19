@@ -18,28 +18,34 @@ object NCInstruction : INodeCompiler<NodeInstruction> {
                 "<--sidebar>",
                 StringBuilder().apply {
                     compiler.categories.forEach { (k, v) ->
-                        append("<div class=\"table\"><table>\n<caption>").append(k).append("</caption>")
+                        append("\t<div class=\"table\"><div class=\"caption\">").append(k).append("</div><br><div class=\"body\">\n")
+                        val left = StringBuilder().append("\t\t<div class=\"left\">\n")
+                        val right = StringBuilder().append("\t\t<div class=\"right\">\n")
                         v.forEach {
-                            append("\n<tr>")
                             if (it.second != null) {
-                                append("<td><a class=\"short-name\" href=\"/").append(it.first).append("\">").append(it.second).append("</a></td>")
-                                append("<td><a class=\"long-name\" href=\"/").append(it.first).append("\">").append(it.first).append("</a></td>")
+                                left.append("\t\t\t<a href=\"/").append(it.first).append("\">").append(it.second).append("</a><br>\n")
+                                right.append("\t\t\t<a href=\"/").append(it.first).append("\">").append(it.first).append("</a><br>\n")
                             } else if (it.third != null) {
-                                append("<td><a class=\"long-name\" href=\"/").append(it.first).append("\">").append(it.first).append("</a></td>")
-                                append("<td><a class=\"symbol-name\" href=\"/").append(it.first).append("\">").append(it.third).append("</a></td>")
-                            } else append("<td><a class=\"long-name\" href=\"/").append(it.first).append("\">").append(it.first).append("</a></td>")
-                            append("</tr>")
+                                left.append("\t\t\t<a href=\"/").append(it.first).append("\">").append(it.first).append("</a><br>\n")
+                                right.append("\t\t\t<a href=\"/").append(it.first).append("\">").append(it.third).append("</a><br>\n")
+                            } else {
+                                left.append("\t\t\t<a href=\"/").append(it.first).append("\">").append(it.first).append("</a><br>\n")
+                                right.append("\t\t\t<br>\n")
+                            }
                         }
-                        append("\n</table></div>\n")
+                        append(left.append("\t\t</div>\n"))
+                        append(right.append("\t\t</div>\n"))
+                        append("\t</div></div>\n")
                     }
                 }.toString()
             )
             str = str.replace(
                 "<--names>",
                 StringBuilder().apply {
-                    node.long?.let { append("\n<div class=\"name-parent\"><div class=\"border-margin\">").append(it).append("</div></div>") }
-                    node.short?.let { append("\n<div class=\"name-parent\"><div class=\"border-margin\">").append(it).append("</div></div>") }
-                    node.symbol?.let { append("\n<div class=\"name-parent\"><div class=\"border-margin\">").append(it).append("</div></div>") }
+                    append("\t\t")
+                    node.long?.let { append("<div class=\"name-parent\"><div class=\"border-margin\">").append(it).append("</div></div>") }
+                    node.short?.let { append("<div class=\"name-parent\"><div class=\"border-margin\">").append(it).append("</div></div>") }
+                    node.symbol?.let { append("<div class=\"name-parent\"><div class=\"border-margin\">").append(it).append("</div></div>") }
                 }.toString()
             )
             str = str.replace(
@@ -50,15 +56,15 @@ object NCInstruction : INodeCompiler<NodeInstruction> {
                 "<--usages>",
                 StringBuilder().apply {
                     node.usage.forEach { it1 ->
-                        append("<div class=\"usage\">\n<div class=\"code\"><code>\n").append(it1.code).append("</code></div>\n")
+                        append("\t<div class=\"usage\"><div class=\"code\"><code>").append(it1.code).append("</code></div>\n")
                         it1.arguments.forEach { it2 ->
-                            append("<div class=\"usage-arg\">\n")
+                            append("\t\t<div class=\"usage-arg\">\n")
                             it2.names.forEach {
-                                append("<div class=\"usage-arg-name\"><div class=\"border-margin\">").append(it).append("</div></div>\n")
+                                append("\t\t\t<div class=\"usage-arg-name\"><div class=\"border-margin\">").append(it).append("</div></div>\n")
                             }
-                            append("<div class=\"usage-arg-desc\"><div class=\"border-margin\">- ").append(it2.desc).append("</div></div>\n").append("</div>\n")
+                            append("\t\t<div class=\"usage-arg-desc\"><div class=\"border-margin\">- ").append(it2.desc).append("</div></div>\n\t\t</div>\n")
                         }
-                        append("</div>\n")
+                        append("\t</div>\n")
                     }
                 }.toString()
             )

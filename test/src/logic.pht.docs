@@ -1,0 +1,89 @@
+(category "logic & bits"
+    (instr
+        (long   "and")
+        (symbol "&")
+        (desc   "[Логическая | Битовая] операция 'И' для двух значений.")
+        (usage
+            "(and argA argB)"
+            [["argA" "argB"] "значения."])
+        (usage
+            "(& argA argB)"
+            [["argA" "argB"] "значения."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (and 3 2))))
+            """
+            "Код работает на всех платформах!")
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (and true true))))
+            """
+            "Код работает на всех платформах!"))
+
+    (instr
+        (long   "or")
+        (symbol "|")
+        (desc   "[Логическая | Битовая] операция 'ИЛИ' для двух значений.")
+        (usage
+            "(or argA argB)"
+            [["argA" "argB"] "значения."])
+        (usage
+            "(| argA argB)"
+            [["argA" "argB"] "значения."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (or 1 2))))
+            """
+            "Код работает на всех платформах!")
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (or false true))))
+            """
+            "Код работает на всех платформах!"))
+
+    (instr
+        (long "xor")
+        (desc "[Логическая | Битовая] операция 'ИСКЛ ИЛИ' для двух значений.")
+        (usage
+            "(xor argA argB)"
+            [["argA" "argB"] "значения."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (xor 1 4))))
+            """
+            "Код работает на всех платформах!")
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (xor false false))))
+            """
+            "Код работает на всех платформах!"))
+
+    (instr
+        (long   "not")
+        (symbol "!")
+        (desc   "[Логическая | Битовая] операция 'НЕ' для одного значения.")
+        (usage
+            "(not arg)"
+            [["arg"] "значение."])
+        (usage
+            "(! arg)"
+            [["arg"] "значение."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (! false))))
+            """
+            "Код работает на всех платформах!")))

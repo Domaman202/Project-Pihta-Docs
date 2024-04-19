@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset=utf-8>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>substrate</title>
+    <style>
+        body {
+            background: dimgray;
+            display: flex;
+            flex-flow: row nowrap;
+            font-size: clamp(10px, 10vh, 20px);
+        }
+
+        .sidebar .table {
+            background: #2E1052;
+            border: 2px solid black;
+            border-radius: 15px;
+            margin-right: 15px;
+        }
+
+        .sidebar .table caption {
+            color: #888888;
+            font-weight: bold;
+        }
+
+        .sidebar .table a {
+            color: #F8F8F8;
+            margin: 15px;
+            text-decoration: none;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        .description {
+            background: gray;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+
+        .names {
+            background: lightgray;
+            border: 2px solid black;
+            border-radius: 10px;
+            display: flex;
+        }
+
+        .name-parent {
+            background: wheat;
+            border: 2px solid black;
+            border-radius: 10px;
+            margin: 5px;
+        }
+
+        .border-margin {
+            margin: 5px;
+        }
+
+        .code {
+            background: pink;
+            border: 2px solid black;
+            border-radius: 10px;
+            margin: 5px;
+        }
+
+        .usage {
+            background: gray;
+            border: 2px solid black;
+            border-radius: 10px;
+            margin-top: 5px;
+        }
+
+        .usage-arg {
+            display: flex;
+            margin: 5px;
+        }
+
+        .usage-arg-name {
+            background: lightgreen;
+            border: 2px solid black;
+            border-radius: 10px;
+            margin-left: 5px;
+        }
+
+        .usage-arg-desc {
+            margin-left: 5px;
+        }
+
+        .example {
+            background: gray;
+            border: 2px solid black;
+            border-radius: 10px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="sidebar">
+    <--sidebar>
+</div>
+<div class="content">
+    <div class="names">
+        <--names>
+    </div>
+    <h2>Описание</h2>
+    <div class="description"><div class="border-margin"><--description></div></div>
+    <h2>Применение</h2>
+    <--usages>
+    <h2>Примеры</h2>
+    <--examples>
+</div>
+</body>
+</html>

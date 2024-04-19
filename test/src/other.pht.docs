@@ -1,0 +1,19 @@
+(category "other"
+    (instr
+        (long   "debug")
+        (short  "dbg")
+        (symbol "_")
+
+        (desc "Отладочная инструкция, игнорирует аргументы.")
+
+        (usage
+            "(debug arg0 argN)"
+            [["arg0" "argN"] "аргументы."])
+
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (debug)))
+            """
+            "Код работает на всех платформах!")))

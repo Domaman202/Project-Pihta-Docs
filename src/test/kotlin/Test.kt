@@ -1,11 +1,8 @@
-import ru.DmN.pht.module.utils.asFilesSequence
+import ru.DmN.phtx.docs.utils.format.format
 
 object Test {
     @JvmStatic
     fun main(args: Array<String>) {
-        val iter = listOf("src/*").asFilesSequence("test").iterator()
-        println(iter.hasNext())
-        println(iter.next())
-        println(iter.hasNext())
+        println(format("Код работает на всех платформах!"))
     }
 }

@@ -4,6 +4,7 @@ import ru.DmN.phtx.docs.ast.NodeInstruction
 import ru.DmN.phtx.docs.html.PhtDocsHtml
 import ru.DmN.phtx.docs.html.utils.ctx.categories
 import ru.DmN.phtx.docs.html.utils.ctx.instructions
+import ru.DmN.phtx.docs.html.utils.format.formatToHTML
 import ru.DmN.siberia.compiler.Compiler
 import ru.DmN.siberia.compiler.ctx.CompilationContext
 import ru.DmN.siberia.compilers.INodeCompiler
@@ -46,14 +47,14 @@ object NCInstruction : INodeCompiler<NodeInstruction> {
                 "<--names>",
                 StringBuilder().apply {
                     append("\t\t\t")
-                    node.long?.let { append("<div class=\"name-parent\"><div class=\"border-margin\">").append(it).append("</div></div>") }
-                    node.short?.let { append("<div class=\"name-parent\"><div class=\"border-margin\">").append(it).append("</div></div>") }
-                    node.symbol?.let { append("<div class=\"name-parent\"><div class=\"border-margin\">").append(it).append("</div></div>") }
+                    node.long?.let { append("<div class=\"name-parent\"><p class=\"border-margin\">").append(it).append("</p></div>") }
+                    node.short?.let { append("<div class=\"name-parent\"><p class=\"border-margin\">").append(it).append("</p></div>") }
+                    node.symbol?.let { append("<div class=\"name-parent\"><p class=\"border-margin\">").append(it).append("</p></div>") }
                 }.toString()
             )
             str = str.replace(
                 "<--description>",
-                node.desc ?: ""
+                formatToHTML(node.desc!!, "class=\"border-margin\"")
             )
             str = str.replace(
                 "<--usages>",
@@ -65,9 +66,9 @@ object NCInstruction : INodeCompiler<NodeInstruction> {
                         it1.arguments.forEach { it2 ->
                             append("\t\t\t<div class=\"usage-arg\">\n")
                             it2.names.forEach {
-                                append("\t\t\t\t<div class=\"usage-arg-name\"><div class=\"border-margin\">").append(it).append("</div></div>\n")
+                                append("\t\t\t\t<div class=\"usage-arg-name\"><p class=\"border-margin\">").append(it).append("</p></div>\n")
                             }
-                            append("\t\t\t\t<div class=\"usage-arg-desc\"><div class=\"border-margin\">- ").append(it2.desc).append("</div></div>\n\t\t\t</div>\n")
+                            append("\t\t\t\t<div class=\"usage-arg-desc\">").append(formatToHTML("- " + it2.desc, "class=\"border-margin\"")).append("</div>\n\t\t\t</div>\n")
                         }
                         append("\t\t</div>")
                     }
@@ -80,7 +81,7 @@ object NCInstruction : INodeCompiler<NodeInstruction> {
                         if (i > 0)
                             append('\n')
                         append("\t\t<div class=\"example\">\n\t\t\t<pre class=\"code\">\n").append(it1.code).append("\t\t\t</pre>\n")
-                        it1.desc?.let { append("\t\t\t<div class=\"border-margin\">").append(it).append("</div>\n") }
+                        it1.desc?.let { append("\t\t\t").append(formatToHTML(it, "class=\"border-margin\"")).append('\n') }
                         append("\t\t</div>")
                     }
                 }.toString()

@@ -27,14 +27,14 @@ object PhtDocsHtml : ModuleCompilers("phtx/docs/html", HTML) {
         if (!ctx.loadedModules.contains(this)) {
             if (!compiler.isModules) { // Провервка на то, что phtx/docs/html вообще был инициализирован в системе
                 compiler.modules = TreeMap()
-                compiler.finalizers.add {
+                compiler.finalizers.add { it ->
                     File(it, "index.js").writeBytes(PhtDocsHtml.getModuleFile("index.js").readBytes())
                     //
                     var str = String(PhtDocsHtml.getModuleFile("index.html").readBytes())
 //                    str = str.replace("<--title>", ctx.module.name)
                     str = str.replace("<--list>", StringBuilder().run {
                         append("\t<ul>\n")
-                        File(it).visit(this, "")
+                        File(it).listFiles()!!.forEach { it.visit(this, "") }
                         append("\t</ul>")
                         toString()
                     })
@@ -45,7 +45,7 @@ object PhtDocsHtml : ModuleCompilers("phtx/docs/html", HTML) {
         }
     }
 
-    private fun File.visit(sb: StringBuilder, dir: String) {
+    private fun File.visit(sb: StringBuilder, dir: String,) {
         if (isDirectory) {
             listFiles()!!.forEach { it.visit(sb, "$dir/$name") }
         } else if (name.endsWith(".html")) {

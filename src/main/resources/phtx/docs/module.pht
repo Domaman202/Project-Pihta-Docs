@@ -1,6 +1,0 @@
-(module
-    (name "phtx/docs")
-    (version "1.0.0")
-    (author "DomamaN202")
-    (deps ["siberia"])
-    (class "ru.DmN.phtx.docs.PihtaDocs"))

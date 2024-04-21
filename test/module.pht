@@ -1,7 +1,0 @@
-(module
-    (name "test")
-    (version "1.0.0")
-    (author "DomamaN202")
-    (deps ["phtx/docs"])
-    (uses ["phtx/docs"])
-    (src  ["src.pht.docs"]))

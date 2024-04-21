@@ -5,6 +5,9 @@ import ru.DmN.phtx.docs.utils.format.FmtString
 import ru.DmN.phtx.docs.utils.format.FmtString.Formatting.*
 import ru.DmN.phtx.docs.utils.format.format
 
+fun String.normalize(): String =
+    this.replace(Regex("[$@]"), "")
+
 fun formatToHTML(input: String, meta: String? = null): String = StringBuilder().run {
     append("<p")
     meta?.let { append(' ').append(it) }

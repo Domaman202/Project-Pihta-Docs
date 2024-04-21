@@ -6,6 +6,7 @@ import ru.DmN.phtx.docs.html.utils.ctx.doc_module
 import ru.DmN.phtx.docs.html.utils.ctx.instructions
 import ru.DmN.phtx.docs.html.utils.ctx.modules
 import ru.DmN.phtx.docs.html.utils.format.formatToHTML
+import ru.DmN.phtx.docs.html.utils.format.normalize
 import ru.DmN.siberia.compiler.Compiler
 import ru.DmN.siberia.compiler.ctx.CompilationContext
 import ru.DmN.siberia.compilers.INodeCompiler
@@ -13,7 +14,7 @@ import java.io.File
 
 object NCInstruction : INodeCompiler<NodeInstruction> {
     override fun compile(node: NodeInstruction, compiler: Compiler, ctx: CompilationContext) {
-        ctx.instructions += Triple(node.long!!, node.short, node.symbol)
+        ctx.instructions += Triple(node.long!!.normalize(), node.short, node.symbol)
         compiler.finalizers.add { it ->
             var str = String(PhtDocsHtml.getModuleFile("instruction.html").readBytes())
             str = str.replace(
@@ -98,7 +99,7 @@ object NCInstruction : INodeCompiler<NodeInstruction> {
                     }
                 }.toString()
             )
-            File("$it/${ctx.doc_module}/instructions/${node.long()}.html").writeText(str)
+            File("$it/${ctx.doc_module}/instructions/${node.long!!.normalize()}.html").writeText(str)
         }
     }
 

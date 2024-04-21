@@ -77,10 +77,6 @@ object PihtaDocs : Module("phtx/docs") {
         add(VALUE,    NRValue)
     }
 
-    private fun initCompilers() {
-
-    }
-
     override fun load(parser: Parser, ctx: ParsingContext, uses: MutableList<String>): Boolean {
         if (!ctx.loadedModules.contains(this)) {
             when (ctx.platform) {

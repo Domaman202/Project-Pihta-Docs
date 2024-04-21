@@ -10,6 +10,7 @@ import ru.DmN.phtx.docs.utils.node.NodeTypes.*
 import ru.DmN.siberia.compiler.Compiler
 import ru.DmN.siberia.compiler.ctx.CompilationContext
 import ru.DmN.siberia.compiler.utils.ModuleCompilers
+import java.io.File
 import java.util.*
 
 object PhtDocsHtml : ModuleCompilers("phtx/docs/html", HTML) {
@@ -24,8 +25,12 @@ object PhtDocsHtml : ModuleCompilers("phtx/docs/html", HTML) {
 
     override fun load(compiler: Compiler, ctx: CompilationContext) {
         if (!ctx.loadedModules.contains(this)) {
-            if (!compiler.isModules)
+            if (!compiler.isModules) { // Провервка на то, что phtx/docs/html вообще был инициализирован в системе
                 compiler.modules = TreeMap()
+                compiler.finalizers.add {
+                    File(it, "index.js").writeBytes(PhtDocsHtml.getModuleFile("index.js").readBytes())
+                }
+            }
             super.load(compiler, ctx)
         }
     }

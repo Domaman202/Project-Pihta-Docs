@@ -24,7 +24,7 @@ private fun StringBuilder.formatToHTML(str: FmtString) {
             }
         )
     }
-    append(str.text)
+    append(str.text.replace("\n", "<br>"))
     str.fmt.forEach {
         append(
             when (it) {

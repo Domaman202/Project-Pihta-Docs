@@ -8,7 +8,7 @@ fun format(input: String, ps: Int = 0): FmtString {
     if (start == -1)
         return FmtString(input.substring(ps), emptyList(), null)
     val fmt = ArrayList<Formatting>()
-    val stop = input.indexOf('}')
+    val stop = input.indexOf('}', start)
     var i = start
     while (true) {
         fmt += when (input[++i]) {
@@ -33,13 +33,15 @@ fun format(input: String, ps: Int = 0): FmtString {
                 input.substring(i + 1, k)
             )
         )
-    } else FmtString(
-        input.substring(0, start),
-        emptyList(),
+    } else {
         FmtString(
-            input.substring(i + 1, stop),
-            fmt,
-            format(input, stop + 1)
+            input.substring(ps, start),
+            emptyList(),
+            FmtString(
+                input.substring(i + 1, stop),
+                fmt,
+                format(input, stop + 1)
+            )
         )
-    )
+    }
 }

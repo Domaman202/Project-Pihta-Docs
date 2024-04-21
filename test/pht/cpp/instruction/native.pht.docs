@@ -1,0 +1,22 @@
+(category "native"
+    (instr
+        (long "@native")
+        (desc """
+            Аннотация @b{native}.
+            Применяется к выражениям типа:
+            1. @b{класс}
+            """)
+        (usage
+            "(@native expr0 exprN)"
+            [["expr0" "exprN"] "выражения."])
+        (example
+            """
+            (use-ctx pht
+                (@native
+                (cls ^Test [] (@static
+                    (defn foo ^void []
+                        (println "Foo!")))))
+                (app-fn
+                    (#foo ^Test)))
+            """
+            "Код работает на платформе C++!")))

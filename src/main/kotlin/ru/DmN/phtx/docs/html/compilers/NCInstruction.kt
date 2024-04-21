@@ -17,6 +17,10 @@ object NCInstruction : INodeCompiler<NodeInstruction> {
         compiler.finalizers.add { it ->
             var str = String(PhtDocsHtml.getModuleFile("instruction.html").readBytes())
             str = str.replace(
+                "<--title>",
+                node.long!!
+            )
+            str = str.replace(
                 "<--sidebar>",
                 StringBuilder().apply {
                     var i = 0
@@ -99,6 +103,6 @@ object NCInstruction : INodeCompiler<NodeInstruction> {
     }
 
     private fun StringBuilder.appendTable(module: String, name: String, ref: String) {
-        append("\t\t\t\t\t<a href=\"/").append(module).append("/instruction/").append(ref).append("\">").append(name).append("</a><br>\n")
+        append("\t\t\t\t\t<a href=\"/").append(module).append("/instructions/").append(ref).append(".html\">").append(name).append("</a><br>\n")
     }
 }

@@ -19,6 +19,9 @@ enum class NodeTypes : INodeType {
     // l
     LIST("list", PARSED),
     LONG("long", PARSED),
+    // m
+    MODULE("module", PARSED),
+    MODULE_("module", PROCESSED),
     // s
     SHORT("short", PARSED),
     SYMBOL("symbol", PARSED),

@@ -2,8 +2,9 @@ package ru.DmN.phtx.docs.html.compilers
 
 import ru.DmN.phtx.docs.ast.NodeInstruction
 import ru.DmN.phtx.docs.html.PhtDocsHtml
-import ru.DmN.phtx.docs.html.utils.ctx.categories
+import ru.DmN.phtx.docs.html.utils.ctx.doc_module
 import ru.DmN.phtx.docs.html.utils.ctx.instructions
+import ru.DmN.phtx.docs.html.utils.ctx.modules
 import ru.DmN.phtx.docs.html.utils.format.formatToHTML
 import ru.DmN.siberia.compiler.Compiler
 import ru.DmN.siberia.compiler.ctx.CompilationContext
@@ -19,27 +20,34 @@ object NCInstruction : INodeCompiler<NodeInstruction> {
                 "<--sidebar>",
                 StringBuilder().apply {
                     var i = 0
-                    compiler.categories.forEach { (k, v) ->
+                    compiler.modules.forEach { (module, categories) ->
                         if (i++ > 0)
                             append('\n')
-                        append("\t\t<div class=\"table\"><div class=\"caption\">").append(k).append("</div><br><div class=\"body\">\n")
-                        val left = StringBuilder().append("\t\t<div class=\"left\">\n")
-                        val right = StringBuilder().append("\t\t<div class=\"right\">\n")
-                        v.forEach {
-                            if (it.second != null) {
-                                left.append("\t\t\t\t<a href=\"/").append(it.first).append("\">").append(it.second).append("</a><br>\n")
-                                right.append("\t\t\t\t<a href=\"/").append(it.first).append("\">").append(it.first).append("</a><br>\n")
-                            } else if (it.third != null) {
-                                left.append("\t\t\t\t<a href=\"/").append(it.first).append("\">").append(it.first).append("</a><br>\n")
-                                right.append("\t\t\t\t<a href=\"/").append(it.first).append("\">").append(it.third).append("</a><br>\n")
-                            } else {
-                                left.append("\t\t\t\t<a href=\"/").append(it.first).append("\">").append(it.first).append("</a><br>\n")
-                                right.append("\t\t\t\t<br>\n")
+                        append("\t\t<div class=\"module\"><div class=\"caption\">").append(module).append("</div>\n")
+                        var j = 0
+                        categories.forEach { (category, instructions) ->
+                            if (j++ > 0)
+                                append('\n')
+                            append("\t\t\t<div class=\"table\"><div class=\"caption\">").append(category).append("</div><br><div class=\"body\">\n")
+                            val left = StringBuilder().append("\t\t\t\t<div class=\"left\">\n")
+                            val right = StringBuilder().append("\t\t\t\t<div class=\"right\">\n")
+                            instructions.forEach {
+                                if (it.second != null) {
+                                    left.appendTable(module, it.second!!, it.first)
+                                    right.appendTable(module, it.first, it.first)
+                                } else if (it.third != null) {
+                                    left.appendTable(module, it.first, it.first)
+                                    right.appendTable(module, it.third!!, it.first)
+                                } else {
+                                    left.appendTable(module, it.first, it.first)
+                                    right.append("\t\t\t\t\t<br>\n")
+                                }
                             }
+                            append(left.append("\t\t\t\t</div>\n"))
+                            append(right.append("\t\t\t\t</div>\n"))
+                            append("\t\t\t</div></div>")
                         }
-                        append(left.append("\t\t\t</div>\n"))
-                        append(right.append("\t\t\t</div>\n"))
-                        append("\t\t</div></div>")
+                        append("\t\t</div>")
                     }
                 }.toString()
             )
@@ -86,7 +94,11 @@ object NCInstruction : INodeCompiler<NodeInstruction> {
                     }
                 }.toString()
             )
-            File("$it/${node.long()}.html").writeText(str)
+            File("$it/${ctx.doc_module}/instructions/${node.long()}.html").writeText(str)
         }
+    }
+
+    private fun StringBuilder.appendTable(module: String, name: String, ref: String) {
+        append("\t\t\t\t\t<a href=\"/").append(module).append("/instruction/").append(ref).append("\">").append(name).append("</a><br>\n")
     }
 }

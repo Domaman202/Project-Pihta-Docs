@@ -22,6 +22,8 @@ object PihtaDocs : Module("phtx/docs") {
         addNP("instr",  NPInstruction)
         // l
         addNP("valn!",  NPList)
+        // m
+        addSNP(MODULE)
         // v
         addNP("value!", NPValue)
     }
@@ -40,6 +42,9 @@ object PihtaDocs : Module("phtx/docs") {
         // l
         addSNU(LIST)
         addSNU(LONG)
+        // m
+        addSNU(MODULE)
+        // MODULE_
         // s
         addSNU(SHORT)
         addSNU(SYMBOL)
@@ -61,6 +66,8 @@ object PihtaDocs : Module("phtx/docs") {
         // l
         add(LIST,     NRList)
         add(LONG,     NRAttribute)
+        // m
+        add(MODULE,   NRModule)
         // s
         add(SHORT,    NRAttribute)
         add(SYMBOL,   NRAttribute)
@@ -88,6 +95,5 @@ object PihtaDocs : Module("phtx/docs") {
         initParsers()
         initUnparsers()
         initProcessors()
-        initCompilers()
     }
 }

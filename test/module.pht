@@ -4,4 +4,4 @@
     (author "DomamaN202")
     (deps ["phtx/docs"])
     (uses ["phtx/docs"])
-    (src  ["src/*"]))
+    (src  ["src.pht.docs"]))

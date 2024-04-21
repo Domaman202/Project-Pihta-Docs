@@ -4,4 +4,4 @@ import ru.DmN.siberia.ast.Node
 import ru.DmN.siberia.ast.NodeNodesList
 import ru.DmN.siberia.utils.node.INodeInfo
 
-class NodeCategory(info: INodeInfo, nodes: MutableList<Node>, val name: String) : NodeNodesList(info, nodes)
+class NodeNamedList(info: INodeInfo, nodes: MutableList<Node>, val name: String) : NodeNodesList(info, nodes)

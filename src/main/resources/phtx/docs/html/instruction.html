@@ -12,37 +12,51 @@
             font-size: clamp(10px, 10vh, 20px);
         }
 
-        .sidebar .table {
-            background: #2E1052;
+        .sidebar .module {
+            background: slategray;
             border: 2px solid black;
             border-radius: 15px;
             margin-right: 15px;
         }
 
-        .sidebar .table .caption {
-            color: #888888;
+        .sidebar .module .caption {
+            color: palegreen;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .sidebar .module .table {
+            background: lightslategray;
+            border: 2px solid black;
+            border-radius: 15px;
+            margin: 15px;
+        }
+
+        .sidebar .module .table .caption {
+            color: paleturquoise;
             font-weight: bold;
             text-align: center;
             margin-bottom: -15px;
         }
 
-        .sidebar .table .body {
+        .sidebar .module .table .body {
             display: flex;
             flex-wrap: wrap;
             align-content: space-between;
         }
 
-        .sidebar .table .body .left {
+        .sidebar .module .table .body .left {
             text-align: left;
             margin-right: auto;
         }
 
-        .sidebar .table .body .right {
+        .sidebar .module .table .body .right {
             text-align: right;
             margin-left: auto;
         }
 
-        .sidebar .table .body a {
+        .sidebar .module .table .body a {
             color: #F8F8F8;
             margin: 15px;
             text-decoration: none;
@@ -65,7 +79,7 @@
             display: flex;
         }
 
-        .name-parent {
+        .names .name-parent {
             background: wheat;
             border: 2px solid black;
             border-radius: 10px;
@@ -90,19 +104,19 @@
             margin-top: 5px;
         }
 
-        .usage-arg {
+        .usage .usage-arg {
             display: flex;
             margin: 5px;
         }
 
-        .usage-arg-name {
+        .usage .usage-arg-name {
             background: lightgreen;
             border: 2px solid black;
             border-radius: 10px;
             margin-left: 5px;
         }
 
-        .usage-arg-desc {
+        .usage .usage-arg-desc {
             margin-left: 5px;
         }
 

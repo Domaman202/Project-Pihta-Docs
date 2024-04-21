@@ -29,9 +29,27 @@ object PhtDocsHtml : ModuleCompilers("phtx/docs/html", HTML) {
                 compiler.modules = TreeMap()
                 compiler.finalizers.add {
                     File(it, "index.js").writeBytes(PhtDocsHtml.getModuleFile("index.js").readBytes())
+                    //
+                    var str = String(PhtDocsHtml.getModuleFile("index.html").readBytes())
+//                    str = str.replace("<--title>", ctx.module.name)
+                    str = str.replace("<--list>", StringBuilder().run {
+                        append("\t<ul>\n")
+                        File(it).visit(this, "")
+                        append("\t</ul>")
+                        toString()
+                    })
+                    File(it, "index.html").writeBytes(str.toByteArray())
                 }
             }
             super.load(compiler, ctx)
+        }
+    }
+
+    private fun File.visit(sb: StringBuilder, dir: String) {
+        if (isDirectory) {
+            listFiles()!!.forEach { it.visit(sb, "$dir/$name") }
+        } else if (name.endsWith(".html")) {
+            sb.append("\t\t<li><a href=\"").append(dir).append('/').append(name).append("\">").append(dir).append('/').append(name).append("</a></li>\n")
         }
     }
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset=utf-8>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>neg</title>
+    <title>@native</title>
     <style>
         body {
             background: dimgray;
@@ -215,25 +215,30 @@
     </div>
     <div class="content">
         <div class="names">
-			<div class="name-parent"><p class="border-margin">neg</p></div>
+			<div class="name-parent"><p class="border-margin">@native</p></div>
         </div>
         <h2>Описание</h2>
-        <div class="description"><p class="border-margin">Инверсия <i>одного</i> значения.</p></div>
+        <div class="description"><p class="border-margin">Аннотация <b>native</b>.<br>Применяется к выражениям типа:<br>1. <b>класс</b><br></p></div>
         <h2>Применение</h2>
-		<div class="usage"><div class="code"><code>(neg arg)</code></div>
+		<div class="usage"><div class="code"><code>(@native expr0 exprN)</code></div>
 			<div class="usage-arg">
-				<div class="usage-arg-name"><p class="border-margin">arg</p></div>
-				<div class="usage-arg-desc"><p class="border-margin">- значение.</p></div>
+				<div class="usage-arg-name"><p class="border-margin">expr0</p></div>
+				<div class="usage-arg-name"><p class="border-margin">exprN</p></div>
+				<div class="usage-arg-desc"><p class="border-margin">- выражения.</p></div>
 			</div>
 		</div>
         <h2>Примеры</h2>
 		<div class="example">
 			<pre class="code">
 (use-ctx pht
+    (@native
+    (cls ^Test [] (@static
+        (defn foo ^void []
+            (println "Foo!")))))
     (app-fn
-        (println (neg 202))))
+        (#foo ^Test)))
 			</pre>
-			<p class="border-margin">Код работает на всех платформах!</p>
+			<p class="border-margin">Код работает на платформе C++!</p>
 		</div>
     </div>
 </body>

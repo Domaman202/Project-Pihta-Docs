@@ -49,7 +49,7 @@ object PhtDocsHtml : ModuleCompilers("phtx/docs/html", HTML) {
         if (isDirectory) {
             listFiles()!!.forEach { it.visit(sb, "$dir/$name") }
         } else if (name.endsWith(".html")) {
-            sb.append("\t\t<li><a href=\"").append(dir).append('/').append(name).append("\">").append(dir).append('/').append(name).append("</a></li>\n")
+            sb.append("\t\t<li><a href=\".").append(dir).append('/').append(name).append("\">").append(dir).append('/').append(name).append("</a></li>\n")
         }
     }
 

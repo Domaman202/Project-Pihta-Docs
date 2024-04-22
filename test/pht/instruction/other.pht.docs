@@ -3,17 +3,43 @@
         (long   "debug")
         (short  "dbg")
         (symbol "_")
-
         (desc "Отладочная инструкция, игнорирует аргументы.")
-
         (usage
             "(debug arg0 argN)"
             [["arg0" "argN"] "аргументы."])
-
         (example
             """
             (use-ctx pht
                 (app-fn
                     (debug)))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long "comment")
+        (desc "Комментарий, игнорируется на уровне парсинга.")
+        (usage
+            "(comment arg0 argN)"
+            [["arg0" "argN"] "аргументы."])
+        (example
+            """
+            (use-ctx pht
+                (comment "Выводим базу.")
+                (app-fn
+                    (println "Славься Сербский Брат!")))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long "alias-type")
+        (desc "Создаёт псевдоним типа.")
+        (usage
+            "(alias-type [[type0 alias0][typeN aliasN]])"
+            [["type"] "тип."]
+            [["alias"] "псевдоним."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (alias-type [[java.lang.Integer i32]])
+                    (println ^i32)))
             """
             "Код работает на всех платформах!")))

@@ -1,0 +1,95 @@
+(category "block"
+    (instr
+        (long "body")
+        (desc "Создаёт под-контекст и выполняет выражения.")
+        (usage
+            "(body expr0 exprN)"
+            [["expr0" "exprN"] "выражения."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (body
+                        (def [[i 12]])
+                        (println i))
+                    (body
+                        (def [[i 21]])
+                        (println i))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long  "named-block")
+        (short "nblock")
+        (desc "Создаёт под-контекст с именем, выполняет в нём выражения.")
+        (usage
+            "(named-block name expr0 exprN)"
+            [["name"] "имя."]
+            [["expr0" "exprN"] "выражения."])
+        (usage
+            "(nblock name expr0 exprN)"
+            [["name"] "имя."]
+            [["expr0" "exprN"] "выражения."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (named-block CycleBlock
+                        (def [[i 0]])
+                        (cycle (< i 10)
+                            (if (> i 5)
+                                (break CycleBlock))
+                            (println i)
+                            (++ i)))))
+            """
+            "Код работает на всех платформах!")
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (def [[i 0]])
+                    (named-block CycleBlock
+                        (cycle (< i 10)
+                            (++ i)
+                            (if (< i 5)
+                                (continue CycleBlock))
+                            (println i)))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long "break")
+        (desc "Переходит к началу именованного блока.")
+        (usage
+            "(break name)"
+            [["name"] "имя блока."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (named-block CycleBlock
+                        (def [[i 0]])
+                        (cycle (< i 10)
+                            (if (> i 5)
+                                (break CycleBlock))
+                            (println i)
+                            (++ i)))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long "continue")
+        (desc "Переходит к концу именованного блока.")
+        (usage
+            "(continue name)"
+            [["name"] "имя блока."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (def [[i 0]])
+                    (named-block CycleBlock
+                        (cycle (< i 10)
+                            (++ i)
+                            (if (< i 5)
+                                (continue CycleBlock))
+                            (println i)))))
+            """
+            "Код работает на всех платформах!")))

@@ -111,4 +111,18 @@
                     (aset arr 3 21)
                     (println (#contentToString arr))))
             """
+            "Код работает на всех платформах!"))
+    (instr
+        (long "new-array")
+        (desc "Создаёт массив заданного типа и размера.")
+        (usage
+            "(new-array type size)"
+            [["type"] "тип."]
+            [["size"] "размер."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (#contentToString (new-array ^int 4)))))
+            """
             "Код работает на всех платформах!")))

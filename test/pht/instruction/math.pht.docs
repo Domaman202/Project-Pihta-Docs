@@ -16,7 +16,6 @@
                     (println (+ 6 3 3))))
             """
             "Код работает на всех платформах!"))
-
     (instr
         (long   "sub")
         (symbol "-")
@@ -34,7 +33,6 @@
                     (println (- 6 3 1))))
             """
             "Код работает на всех платформах!"))
-
     (instr
         (long   "mul")
         (symbol "*")
@@ -52,7 +50,6 @@
                     (println (* 7 7 7))))
             """
             "Код работает на всех платформах!"))
-
     (instr
         (long   "div")
         (symbol "/")
@@ -70,7 +67,6 @@
                     (println (/ 6 2 3))))
             """
             "Код работает на всех платформах!"))
-
     (instr
         (long   "rem")
         (symbol "%")
@@ -88,7 +84,6 @@
                     (println (% 3 2))))
             """
             "Код работает на всех платформах!"))
-
     (instr
         (long "neg")
         (desc "Инверсия @i{одного} значения.")
@@ -102,7 +97,6 @@
                     (println (neg 202))))
             """
             "Код работает на всех платформах!"))
-
     (instr
         (long   "shift-left")
         (symbol "<<")
@@ -122,7 +116,6 @@
                     (println (<< 1 10))))
             """
             "Код работает на всех платформах!"))
-
     (instr
         (long   "shift-right")
         (symbol ">>")
@@ -140,5 +133,95 @@
             (use-ctx pht
                 (app-fn
                     (println (>> 1024 10))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long   "increment-prefix")
+        (short  "inc")
+        (symbol "++")
+        (desc   """
+            Инкрементирует @b{одно} значение.
+            @b{Сначала инкрементирует}, потом возвращает.
+            """)
+        (usage
+            "(increment-prefix value)"
+            [["value"] "значение."])
+        (usage
+            "(inc value)"
+            [["value"] "значение."])
+        (usage
+            "(++ value)"
+            [["value"] "значение."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (body (def [[i 0]]) (++  i)))
+                    (println (body (def [[i 0]]) (inc i)))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long  "increment-postfix")
+        (short "inc-")
+        (desc  """
+            Инкрементирует @b{одно} значение.
+            @{Сначала возвращает}, потом инкрементирует.
+            """)
+        (usage
+            "(increment-postfix value)"
+            [["value"] "значение."])
+        (usage
+            "(inc- value)"
+            [["value"] "значение."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (body (def [[i 0]]) (inc- i)))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long   "decrement-prefix")
+        (short  "dec")
+        (symbol "--")
+        (desc   """
+            Декрементирует @b{одно} значение.
+            @b{Сначала декрементирует}, потом возвращает.
+            """)
+        (usage
+            "(decrement-prefix value)"
+            [["value"] "значение."])
+        (usage
+            "(dec value)"
+            [["value"] "значение."])
+        (usage
+            "(-- value)"
+            [["value"] "значение."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (body (def [[i 0]]) (--  i)))
+                    (println (body (def [[i 0]]) (dec i)))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long  "decrement-postfix")
+        (short "dec-")
+        (desc  """
+            Декрементирует @b{одно} значение.
+            @{Сначала возвращает}, потом декрементирует.
+            """)
+        (usage
+            "(decrement-postfix value)"
+            [["value"] "значение."])
+        (usage
+            "(dec- value)"
+            [["value"] "значение."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (body (def [[i 0]]) (dec- i)))))
             """
             "Код работает на всех платформах!")))

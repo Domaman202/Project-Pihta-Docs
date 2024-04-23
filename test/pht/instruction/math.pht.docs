@@ -136,16 +136,12 @@
             """
             "Код работает на всех платформах!"))
     (instr
-        (long   "increment-prefix")
-        (short  "inc")
+        (long   "inc")
         (symbol "++")
         (desc   """
             Инкрементирует @b{одно} значение.
             @b{Сначала инкрементирует}, потом возвращает.
             """)
-        (usage
-            "(increment-prefix value)"
-            [["value"] "значение."])
         (usage
             "(inc value)"
             [["value"] "значение."])
@@ -161,15 +157,11 @@
             """
             "Код работает на всех платформах!"))
     (instr
-        (long  "increment-postfix")
-        (short "inc-")
-        (desc  """
+        (long "inc-")
+        (desc """
             Инкрементирует @b{одно} значение.
             @{Сначала возвращает}, потом инкрементирует.
             """)
-        (usage
-            "(increment-postfix value)"
-            [["value"] "значение."])
         (usage
             "(inc- value)"
             [["value"] "значение."])
@@ -181,16 +173,12 @@
             """
             "Код работает на всех платформах!"))
     (instr
-        (long   "decrement-prefix")
-        (short  "dec")
+        (long   "dec")
         (symbol "--")
         (desc   """
             Декрементирует @b{одно} значение.
             @b{Сначала декрементирует}, потом возвращает.
             """)
-        (usage
-            "(decrement-prefix value)"
-            [["value"] "значение."])
         (usage
             "(dec value)"
             [["value"] "значение."])
@@ -206,15 +194,11 @@
             """
             "Код работает на всех платформах!"))
     (instr
-        (long  "decrement-postfix")
-        (short "dec-")
+        (long "dec-")
         (desc  """
             Декрементирует @b{одно} значение.
             @{Сначала возвращает}, потом декрементирует.
             """)
-        (usage
-            "(decrement-postfix value)"
-            [["value"] "значение."])
         (usage
             "(dec- value)"
             [["value"] "значение."])

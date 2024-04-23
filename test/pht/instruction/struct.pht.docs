@@ -1,0 +1,78 @@
+(category "struct"
+    (instr
+        (long  "class")
+        (short "cls")
+        (desc  "Определение класса.")
+        (usage
+            "(class name [type0 typeN] expr0 exprN)"
+            [["name"] "имя."]
+            [["type0" "typeN"] "предки."]
+            [["expr0" "exprN"] "тело."])
+        (usage
+            "(cls name [type0 typeN] expr0 exprN)"
+            [["name"] "имя."]
+            [["type0" "typeN"] "предки."]
+            [["expr0" "exprN"] "тело."])
+        (example
+            """
+            (use-ctx pht
+                (cls Test [^Object]
+                    (ctor [] (ccall))
+                    (defn foo ^void []
+                        (println "Foo!")))
+                (app-fn
+                    (#foo (new ^Test))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long  "interface")
+        (short "itf")
+        (desc  "Определение интерфейса.")
+        (usage
+            "(interface name [type0 typeN] expr0 exprN)"
+            [["name"] "имя."]
+            [["type0" "typeN"] "предки."]
+            [["expr0" "exprN"] "тело."])
+        (usage
+            "(itf name [type0 typeN] expr0 exprN)"
+            [["name"] "имя."]
+            [["type0" "typeN"] "предки."]
+            [["expr0" "exprN"] "тело."])
+        (example
+            """
+            (use-ctx pht
+                (itf IFoo [] (@abstract
+                    (defn foo ^void [])))
+                (obj FooImpl [^Object ^IFoo]
+                    (ctor [] (ccall))
+                    (defn foo ^void []
+                        (println "Foo!")))
+                (app-fn
+                    (#foo ^FooImpl)))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long  "object")
+        (short "obj")
+        (desc  "Определение объекта.")
+        (usage
+            "(object name [type0 typeN] expr0 exprN)"
+            [["name"] "имя."]
+            [["type0" "typeN"] "предки."]
+            [["expr0" "exprN"] "тело."])
+        (usage
+            "(obj name [type0 typeN] expr0 exprN)"
+            [["name"] "имя."]
+            [["type0" "typeN"] "предки."]
+            [["expr0" "exprN"] "тело."])
+        (example
+            """
+            (use-ctx pht
+                (obj Test [^Object]
+                    (ctor [] (ccall))
+                    (defn foo ^void []
+                        (println "Foo!")))
+                (app-fn
+                    (#foo ^Test)))
+            """
+            "Код работает на всех платформах!")))

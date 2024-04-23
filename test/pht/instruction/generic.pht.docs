@@ -15,6 +15,96 @@
                     (def [[list (as-gens ^java.util.List (new ^java.util.ArrayList) ^String)]])
                     (#add list "Hi!")
                     (println (typeof list))
-                    (println (typeof (#get list 0))))
+                    (println (typeof (#get list 0)))))
             """
-            "Код работает на всех платформах!"))))
+            "Код работает на всех платформах!"))
+    (instr
+        (long  "class")
+        (short "cls")
+        (desc  "Определение класса.")
+        (usage
+            "(class [[nameG0 typeG0] [nameGN typeGN]] name [type0 typeN] expr0 exprN)"
+            [["nameG0" "nameGN"] "имя generic-а."]
+            [["typeG0" "typeGN"] "тип generic-а."]
+            [["name"] "имя."]
+            [["type0" "typeN"] "предки."]
+            [["expr0" "exprN"] "тело."])
+        (usage
+            "(cls [[nameG0 typeG0] [nameGN typeGN]] name [type0 typeN] expr0 exprN)"
+            [["nameG0" "nameGN"] "имя generic-а."]
+            [["typeG0" "typeGN"] "тип generic-а."]
+            [["name"] "имя."]
+            [["type0" "typeN"] "предки."]
+            [["expr0" "exprN"] "тело."])
+        (example
+            """
+            (use-ctx pht
+                (cls [[T ^Object]] TestA [^Object]
+                    (ctor [] (ccall))
+                    (defn foo T^ [] nil))
+                (app-fn
+                    (println (typeof (#foo (new ^TestA<^String>))))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long  "def-func")
+        (short "defn")
+        (desc  "Определение метода.")
+        (usage
+            "(def-func [[nameG0 typeG0] [nameGN typeGN]] name typeR [[arg0 type0] [argN typeN]] expr0 exprN)"
+            [["nameG0" "nameGN"] "имя generic-а."]
+            [["typeG0" "typeGN"] "тип generic-а."]
+            [["name"] "имя."]
+            [["typeR"] "возвращаемый тип."]
+            [["arg0" "argN"] "имя аргумента."]
+            [["type0" "typeN"] "тип аргумента."]
+            [["expr0" "exprN"] "тело."])
+        (usage
+            "(defn [[nameG0 typeG0] [nameGN typeGN]] name typeR [[arg0 type0] [argN typeN]] expr0 exprN)"
+            [["name"] "имя."]
+            [["typeR"] "возвращаемый тип."]
+            [["arg0" "argN"] "имя аргумента."]
+            [["type0" "typeN"] "тип аргумента."]
+            [["expr0" "exprN"] "тело."])
+        (example
+            """
+            (use-ctx pht
+                (app
+                    (defn [[T ^Object]] foo T^ [] nil)
+                    (app-fn
+                        (println (typeof (#foo<^String> ^App))))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long  "def-ext-func")
+        (short "efn")
+        (desc  "Определение метода-расширения.")
+        (usage
+            "(def-ext-func [[nameG0 typeG0] [nameGN typeGN]] typeE name typeR [[arg0 type0] [argN typeN]] expr0 exprN)"
+            [["nameG0" "nameGN"] "имя generic-а."]
+            [["typeG0" "typeGN"] "тип generic-а."]
+            [["typeE"] "расширяемый тип."]
+            [["name"] "имя."]
+            [["typeR"] "возвращаемый тип."]
+            [["arg0" "argN"] "имя аргумента."]
+            [["type0" "typeN"] "тип аргумента."]
+            [["expr0" "exprN"] "тело."])
+        (usage
+            "(efn [[nameG0 typeG0] [nameGN typeGN]] typeE name typeR [[arg0 type0] [argN typeN]] expr0 exprN)"
+            [["nameG0" "nameGN"] "имя generic-а."]
+            [["typeG0" "typeGN"] "тип generic-а."]
+            [["typeE"] "расширяемый тип."]
+            [["name"] "имя."]
+            [["typeR"] "возвращаемый тип."]
+            [["arg0" "argN"] "имя аргумента."]
+            [["type0" "typeN"] "тип аргумента."]
+            [["expr0" "exprN"] "тело."])
+        (example
+            """
+            (use-ctx pht
+                (app
+                    (efn [[T ^Object]] ^String test T^ [] nil)
+                    (app-fn
+                        (println (typeof (#test<^String> "Слава России!"))))))
+            """
+            "Код работает на всех платформах!")))

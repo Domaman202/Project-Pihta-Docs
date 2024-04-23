@@ -12,12 +12,6 @@ import java.io.File
 
 object NCModule : INodeCompiler<NodeNamedList> {
     override fun compile(node: NodeNamedList, compiler: Compiler, ctx: CompilationContext) {
-        compiler.finalizers.add {
-            File(it, node.name).apply {
-                File(this, "instructions").mkdirs()
-            }
-        }
-        //
         val context = ctx.subCtx()
         context.doc_module = node.name
         context.categories = compiler.modules.getOrPut(node.name) { HashMap() }

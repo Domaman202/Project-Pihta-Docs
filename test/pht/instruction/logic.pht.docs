@@ -1,4 +1,4 @@
-(category "logic & bits"
+(category "logic and bits"
     (instr
         (long   "and")
         (symbol "&")

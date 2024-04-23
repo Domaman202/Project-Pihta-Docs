@@ -2,6 +2,7 @@ package ru.DmN.phtx.docs.html.compilers
 
 import ru.DmN.phtx.docs.ast.NodeInstruction
 import ru.DmN.phtx.docs.html.PhtDocsHtml
+import ru.DmN.phtx.docs.html.utils.ctx.category
 import ru.DmN.phtx.docs.html.utils.ctx.doc_module
 import ru.DmN.phtx.docs.html.utils.ctx.instructions
 import ru.DmN.phtx.docs.html.utils.ctx.modules
@@ -38,13 +39,13 @@ object NCInstruction : INodeCompiler<NodeInstruction> {
                             val right = StringBuilder().append("\t\t\t\t<div class=\"right\">\n")
                             instructions.forEach {
                                 if (it.second != null) {
-                                    left.appendTable(module, it.second!!, it.first)
-                                    right.appendTable(module, it.first, it.first)
+                                    left.appendTable(module, category, it.second!!, it.first)
+                                    right.appendTable(module, category, it.first, it.first)
                                 } else if (it.third != null) {
-                                    left.appendTable(module, it.first, it.first)
-                                    right.appendTable(module, it.third!!, it.first)
+                                    left.appendTable(module, category, it.first, it.first)
+                                    right.appendTable(module, category, it.third!!, it.first)
                                 } else {
-                                    left.appendTable(module, it.first, it.first)
+                                    left.appendTable(module, category, it.first, it.first)
                                     right.append("\t\t\t\t\t<br>\n")
                                 }
                             }
@@ -99,11 +100,11 @@ object NCInstruction : INodeCompiler<NodeInstruction> {
                     }
                 }.toString()
             )
-            File("$it/${ctx.doc_module}/instructions/${node.long!!.normalize()}.html").writeText(str)
+            File("$it/${ctx.doc_module}/${ctx.category}/instructions").mkdirs()
+            File("$it/${ctx.doc_module}/${ctx.category}/instructions/${node.long!!.normalize()}.html").writeText(str)
         }
     }
 
-    private fun StringBuilder.appendTable(module: String, name: String, ref: String) {
-        append("\t\t\t\t\t<a href=\"/").append(module).append("/instructions/").append(ref).append(".html\">").append(name).append("</a><br>\n")
-    }
+    private fun StringBuilder.appendTable(module: String, category :String, name: String, ref: String) =
+        append("\t\t\t\t\t<a href=\"/").append(module).append('/').append(category).append("/instructions/").append(ref).append(".html\">").append(name).append("</a><br>\n")
 }

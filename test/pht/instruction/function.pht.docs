@@ -1,0 +1,59 @@
+(category "function"
+    (instr
+        (long  "def-func")
+        (short "defn")
+        (desc  "Определение метода.")
+        (usage
+            "(def-func name typeR [[arg0 type0] [argN typeN]] expr0 exprN)"
+            [["name"] "имя."]
+            [["typeR"] "возвращаемый тип."]
+            [["arg0" "argN"] "имя аргумента."]
+            [["type0" "typeN"] "тип аргумента."]
+            [["expr0" "exprN"] "тело."])
+        (usage
+            "(defn name typeR [[arg0 type0] [argN typeN]] expr0 exprN)"
+            [["name"] "имя."]
+            [["typeR"] "возвращаемый тип."]
+            [["arg0" "argN"] "имя аргумента."]
+            [["type0" "typeN"] "тип аргумента."]
+            [["expr0" "exprN"] "тело."])
+        (example
+            """
+            (use-ctx pht
+                (app
+                    (defn foo ^void []
+                        (println "Foo!"))
+                    (app-fn
+                        (#foo ^App))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long  "def-ext-func")
+        (short "efn")
+        (desc  "Определение метода-расширения.")
+        (usage
+            "(def-ext-func typeE name typeR [[arg0 type0] [argN typeN]] expr0 exprN)"
+            [["typeE"] "расширяемый тип."]
+            [["name"] "имя."]
+            [["typeR"] "возвращаемый тип."]
+            [["arg0" "argN"] "имя аргумента."]
+            [["type0" "typeN"] "тип аргумента."]
+            [["expr0" "exprN"] "тело."])
+        (usage
+            "(efn typeE name typeR [[arg0 type0] [argN typeN]] expr0 exprN)"
+            [["typeE"] "расширяемый тип."]
+            [["name"] "имя."]
+            [["typeR"] "возвращаемый тип."]
+            [["arg0" "argN"] "имя аргумента."]
+            [["type0" "typeN"] "тип аргумента."]
+            [["expr0" "exprN"] "тело."])
+        (example
+            """
+            (use-ctx pht
+                (app
+                    (efn ^String log ^void []
+                        (println this))
+                    (app-fn
+                        (#log "Славься Русь!"))))
+            """
+            "Код работает на всех платформах!")))

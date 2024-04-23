@@ -12,19 +12,19 @@ var IContextCollection<*>.doc_module
 val Compiler.isModules
     get() = this.contexts.containsKey(MODULES)
 
+var IContextCollection<*>.category
+    set(value) { this.contexts[CATEGORY] = value }
+    get() = this.contexts[CATEGORY] as String
+
+// lists
+
 var Compiler.modules
     set(value) { this.contexts[MODULES] = value }
     get() = this.contexts[MODULES] as MutableMap<String, MutableMap<String, MutableList<Triple<String, String?, String?>>>>
 
-val IContextCollection<*>.isCategories
-    get() = this.contexts.containsKey(CATEGORIES)
-
 var IContextCollection<*>.categories
     set(value) { this.contexts[CATEGORIES] = value }
     get() = this.contexts[CATEGORIES] as MutableMap<String, MutableList<Triple<String, String?, String?>>>
-
-val IContextCollection<*>.isInstructions
-    get() = this.contexts.containsKey(INSTRUCTIONS)
 
 var IContextCollection<*>.instructions
     set(value) { this.contexts[INSTRUCTIONS] = value }

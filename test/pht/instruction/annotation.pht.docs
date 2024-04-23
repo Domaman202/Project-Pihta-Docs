@@ -87,4 +87,25 @@
                 (app-fn
                     (#foo ^FooB)))
             """
+            "Код работает на всех платформах!"))
+    (instr
+        (long "@inline")
+        (desc """
+            Аннотация @b{inline}.
+            Применяется к выражениям типа:
+            1. @b{метод}
+            """)
+        (usage
+            "(@inline expr0 exprN)"
+            [["expr0" "exprN"] "выражения."])
+        (example
+            """
+            (use-ctx pht
+                (app
+                    (@inline
+                    (defn foo ^void []
+                        (println "Foo!")))
+                    (app-fn
+                        (#foo .))))
+            """
             "Код работает на всех платформах!")))

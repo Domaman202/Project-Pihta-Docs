@@ -56,4 +56,195 @@
                     (app-fn
                         (#log "Славься Русь!"))))
             """
-            "Код работает на всех платформах!")))
+            "Код работает на всех платформах!"))
+    (instr
+        (long  "lambda")
+        (short "fn")
+        (desc  "Создаёт безымянную функцию, возвращает ссылку на неё.")
+        (usage
+            "(lambda type [nameV0 nameVN] [nameA0 nameAN] expr0 exprN)"
+            [["type"] "тип ссылки."]
+            [["nameV0" "nameVN"] "внешние переменные."]
+            [["nameA0" "nameAN"] "аргументы."])
+        (usage
+            "(lambda [nameV0 nameVN] [nameA0 nameAN] expr0 exprN)"
+            [["type"] "тип ссылки."]
+            [["nameV0" "nameVN"] "внешние переменные."]
+            [["nameA0" "nameAN"] "аргументы."])
+        (usage
+            "(fn type [nameV0 nameVN] [nameA0 nameAN] expr0 exprN)"
+            [["type"] "тип ссылки."]
+            [["nameV0" "nameVN"] "внешние переменные."]
+            [["nameA0" "nameAN"] "аргументы."])
+        (usage
+            "(fn [nameV0 nameVN] [nameA0 nameAN] expr0 exprN)"
+            [["type"] "тип ссылки."]
+            [["nameV0" "nameVN"] "внешние переменные."]
+            [["nameA0" "nameAN"] "аргументы."])
+        (example
+            """
+            (use-ctx pht
+                (import java
+                    [[types [java.lang.Runnable]]])
+                (app
+                    (defn test ^void [[o ^Runnable]]
+                        (#run o))
+                    (app-fn
+                        (#test ^App (fn ^Runnable [][] (println "Арен брат, с днюхой!"))))))
+            """
+            "Код работает на @b{jvm} платформе!")
+        (example
+            """
+            (use-ctx pht
+                (import java
+                    [[types [java.lang.Runnable]]])
+                (app
+                    (defn test ^void [[o ^Runnable]]
+                        (#run o))
+                    (app-fn
+                        (#test ^App (fn [][] (println "Арен брат, с днюхой!"))))))
+            """
+            "Код работает на @b{jvm} платформе!")
+        (example
+            """
+            (use-ctx pht
+                (import java
+                    [[types [java.lang.Runnable]]])
+                (app
+                    (defn test ^void [[o ^Runnable]]
+                        (#run o))
+                    (app-fn
+                        (def [[i 12] [j 21]])
+                        (#test ^App (fn ^Runnable [i j][] (println (+ i j)))))))
+            """
+            "Код работает на @b{jvm} платформе!")
+        (example
+            """
+            (use-ctx pht
+                (import java
+                    [[types [java.lang.Runnable]]])
+                (app
+                    (defn test ^void [[o ^Runnable]]
+                        (#run o))
+                    (fld [[i ^int] [j ^int]])
+                    (app-fn
+                        (set i 12)
+                        (set j 21)
+                        (#test ^App (fn [i j][] (println (+ i j)))))))
+            """
+            "Код работает на @b{jvm} платформе!"))
+    (instr
+        (long  "ref-func")
+        (short "rfn")
+        (desc  "Возвращает ссылку на метод.")
+        (usage
+            "(ref-func type0 type1 name)"
+            [["type0"] "тип ссылки."]
+            [["type1"] "тип."]
+            [["name"]  "имя."])
+        (usage
+            "(ref-func type0 instance name)"
+            [["type0"]    "тип ссылки."]
+            [["instance"] "объект."]
+            [["name"]     "имя."])
+        (usage
+            "(ref-func . type name)"
+            [["type"] "тип."]
+            [["name"] "имя."])
+        (usage
+            "(ref-func . instance name)"
+            [["instance"] "объект."]
+            [["name"]     "имя."])
+        (usage
+            "(ref-func type . name)"
+            [["type"] "тип ссылки."]
+            [["name"] "имя."])
+        (usage
+            "(ref-func . . name)"
+            [["name"] "имя."])
+        (usage
+            "(rfn type0 type1 name)"
+            [["type0"] "тип ссылки."]
+            [["type1"] "тип."]
+            [["name"]  "имя."])
+        (usage
+            "(rfn type0 instance name)"
+            [["type0"]    "тип ссылки."]
+            [["instance"] "объект."]
+            [["name"]     "имя."])
+        (usage
+            "(rfn . type name)"
+            [["type"] "тип."]
+            [["name"] "имя."])
+        (usage
+            "(rfn . instance name)"
+            [["instance"] "объект."]
+            [["name"]     "имя."])
+        (usage
+            "(rfn type . name)"
+            [["type"] "тип ссылки."]
+            [["name"] "имя."])
+        (usage
+            "(rfn . . name)"
+            [["name"] "имя."])
+        (example
+            """
+            (use-ctx pht
+                (import java
+                    [[types [java.util.function.Function]]])
+                (cls Test [^Object] (@static
+                    (defn foo ^String [[o ^String]] o)))
+                (app-fn
+                    (println (#apply (rfn ^Function ^Test foo) "Foo!"))))
+            """
+            "Код работает на @b{} платформе!")
+        (example
+            """
+            (progn
+                (import java
+                    [[types [java.util.function.Function]]])
+                (cls Test [^Object]
+                    (ctor [] (ccall))
+                    (defn foo ^String [[o ^String]] o))
+                (app-fn
+                    (println (#apply (rfn ^Function (new ^Test) foo) "Foo!"))))
+            """
+            "Код работает на @b{} платформе!")
+        (example
+            """
+            (use-ctx pht
+                (import java
+                    [[types [java.util.function.Function]]])
+                (cls Provider [^Object] (@static
+                    (defn foo ^String [[o ^String]] o)))
+                (cls Consumer [^Object] (@static
+                    (defn test ^void [[f ^Function]]
+                        (println (#apply f "Слава России!")))))
+                (app-fn
+                    (#test ^Consumer (rfn . ^Provider foo))))
+            """
+            "Код работает на @b{} платформе!")
+        (example
+            """
+            (progn
+                (import java [[types [java.lang.Runnable]]])
+                (cls Test [^Object] (@static
+                    (defn foo ^void []
+                        (println "Foo!")))
+                    (app-fn
+                        (#run (rfn ^Runnable . foo)))))
+            """
+            "Код работает на @b{} платформе!")
+        (example
+            """
+            (use-ctx pht
+                (import java [[types [java.lang.Runnable]]])
+                (cls Test [^Object] (@static
+                    (defn foo ^void []
+                        (println "Foo!"))
+                    (defn run-runnable ^void [[runnable ^Runnable]]
+                        (#run runnable)))
+                    (app-fn
+                        (#run-runnable . (rfn . . foo)))))
+            """
+            "Код работает на @b{} платформе!")))

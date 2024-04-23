@@ -1,5 +1,65 @@
 (category "function"
     (instr
+        (long  "def-ctor")
+        (short "ctor")
+        (desc  "Определение конструктора.")
+        (usage
+            "(def-ctor [[arg0 type0] [argN typeN]] expr0 exprN)"
+            [["arg0" "argN"] "имя аргумента."]
+            [["type0" "typeN"] "тип аргумента."]
+            [["expr0" "exprN"] "тело."])
+        (usage
+            "(ctor [[arg0 type0] [argN typeN]] expr0 exprN)"
+            [["arg0" "argN"] "имя аргумента."]
+            [["type0" "typeN"] "тип аргумента."]
+            [["expr0" "exprN"] "тело."])
+        (example
+            """
+            (use-ctx pht
+                (cls Test [^Object]
+                    (ctor [[i ^int] [j ^double]]
+                        (ccall)
+                        (println i)
+                        (println j)))
+                (app-fn
+                    (println (new ^Test 12 21.33))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long  "def-enum-ctor")
+        (short "ector")
+        (desc  "Определение конструктора перечисления.")
+        (usage
+            "(def-enum-ctor [[arg0 type0] [argN typeN]] expr0 exprN)"
+            [["arg0" "argN"] "имя аргумента."]
+            [["type0" "typeN"] "тип аргумента."]
+            [["expr0" "exprN"] "тело."])
+        (usage
+            "(ector [[arg0 type0] [argN typeN]] expr0 exprN)"
+            [["arg0" "argN"] "имя аргумента."]
+            [["type0" "typeN"] "тип аргумента."]
+            [["expr0" "exprN"] "тело."])
+        (example
+            """
+            (use-ctx pht
+                (enum Colors [^Enum]
+                    (ector [[r ^int] [g ^int] [b ^int]]
+                        (set this/red r)
+                        (set this/green g)
+                        (set this/blue b))
+                    (fld [
+                        [red    ^int]
+                        [green  ^int]
+                        [blue   ^int]])
+                    (efld [
+                        [RED    255 0 0]
+                        [GREEN  0 255 0]
+                        [BLUE   0 0 255]]))
+                (app-fn
+                    (println ^Colors/RED)))
+            """
+            "Код работает на всех платформах!"))
+    (instr
         (long  "def-func")
         (short "defn")
         (desc  "Определение метода.")

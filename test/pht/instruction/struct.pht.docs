@@ -75,4 +75,32 @@
                 (app-fn
                     (#foo ^Test)))
             """
+            "Код работает на всех платформах!"))
+    (instr
+        (long "enum")
+        (desc "Определение перечисления.")
+        (usage
+            "(enum name [type0 typeN] expr0 exprN)"
+            [["name"] "имя."]
+            [["type0" "typeN"] "предки."]
+            [["expr0" "exprN"] "тело."])
+        (example
+            """
+            (use-ctx pht
+                (enum Colors [^Enum]
+                    (ector [[r ^int] [g ^int] [b ^int]]
+                        (set this/red r)
+                        (set this/green g)
+                        (set this/blue b))
+                    (fld [
+                        [red    ^int]
+                        [green  ^int]
+                        [blue   ^int]])
+                    (efld [
+                        [RED    255 0 0]
+                        [GREEN  0 255 0]
+                        [BLUE   0 0 255]]))
+                (app-fn
+                    (println ^Colors/RED)))
+            """
             "Код работает на всех платформах!")))

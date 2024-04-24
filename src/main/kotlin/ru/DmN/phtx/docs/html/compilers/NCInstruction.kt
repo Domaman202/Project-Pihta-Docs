@@ -34,7 +34,7 @@ object NCInstruction : INodeCompiler<NodeInstruction> {
                         categories.forEach { (category, instructions) ->
                             if (j++ > 0)
                                 append('\n')
-                            append("\t\t\t<div class=\"table\"><div class=\"caption\">").append(category).append("</div><br><div class=\"body\">\n")
+                            append("\t\t\t<div class=\"table\"><div class=\"caption\">").append(category.replace('_', ' ')).append("</div><br><div class=\"body\">\n")
                             val left = StringBuilder().append("\t\t\t\t<div class=\"left\">\n")
                             val right = StringBuilder().append("\t\t\t\t<div class=\"right\">\n")
                             instructions.forEach {

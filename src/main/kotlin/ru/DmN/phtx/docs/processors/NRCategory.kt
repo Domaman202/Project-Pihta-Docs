@@ -11,5 +11,5 @@ import ru.DmN.siberia.processors.INodeProcessor
 
 object NRCategory : INodeProcessor<NodeNodesList> {
     override fun process(node: NodeNodesList, processor: Processor, ctx: ProcessingContext, valMode: Boolean): NodeNamedList =
-        NodeNamedList(node.info.withType(CATEGORY_), node.nodes.dropMap(1) { processor.process(it, ctx, false)!! }, processor.computeString(node.nodes[0], ctx))
+        NodeNamedList(node.info.withType(CATEGORY_), node.nodes.dropMap(1) { processor.process(it, ctx, false)!! }, processor.computeString(node.nodes[0], ctx).replace(' ', '_'))
 }

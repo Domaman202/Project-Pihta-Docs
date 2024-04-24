@@ -8,14 +8,12 @@ import ru.DmN.siberia.compiler.Compiler
 import ru.DmN.siberia.compiler.ctx.CompilationContext
 import ru.DmN.siberia.compilers.INodeCompiler
 import ru.DmN.siberia.compilers.NCDefault
-import java.io.File
 
 object NCCategory : INodeCompiler<NodeNamedList> {
     override fun compile(node: NodeNamedList, compiler: Compiler, ctx: CompilationContext) {
         val context = ctx.subCtx()
-        val name = node.name.replace(" ", "_")
-        context.category = name
-        context.instructions = ctx.categories.getOrPut(name) { ArrayList() }
+        context.category = node.name
+        context.instructions = ctx.categories.getOrPut(node.name) { ArrayList() }
         NCDefault.compile(node, compiler, context)
     }
 }

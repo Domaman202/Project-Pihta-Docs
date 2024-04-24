@@ -29,23 +29,25 @@ object PhtDocsHtml : ModuleCompilers("phtx/docs/html", HTML) {
         if (!ctx.loadedModules.contains(this)) {
             if (!compiler.isModules) { // Провервка на то, что phtx/docs/html вообще был инициализирован в системе
                 compiler.modules = TreeMap()
-                compiler.finalizers.add { it ->
-                    File(it, "index.js").writeBytes(PhtDocsHtml.getModuleFile("index.js").readBytes())
-                    //
-                    var str = String(PhtDocsHtml.getModuleFile("index.html").readBytes())
+                compiler.finalizers.add { _ ->
+                    compiler.finalizers.add { it ->
+                        File(it, "index.js").writeBytes(PhtDocsHtml.getModuleFile("index.js").readBytes())
+                        //
+                        var str = String(PhtDocsHtml.getModuleFile("index.html").readBytes())
 //                    str = str.replace("<--title>", ctx.module.name)
-                    str = str.replace("<--list>", StringBuilder().run {
-                        append("\t<ul>\n")
-                        val list = ArrayList<File>()
-                        File(it).listFiles()!!.forEach { it.visit(this, list) }
-                        val i = it.length
-                        list.stream().map { it.path.substring(i) }.forEach {
-                            append("\t\t<li><a href=\"").append(it).append("\">").append(it).append("</a></li>\n")
-                        }
-                        append("\t</ul>")
-                        toString()
-                    })
-                    File(it, "index.html").writeBytes(str.toByteArray())
+                        str = str.replace("<--list>", StringBuilder().run {
+                            append("\t<ul>\n")
+                            val list = ArrayList<File>()
+                            File(it).listFiles()!!.forEach { it.visit(this, list) }
+                            val i = it.length
+                            list.stream().map { it.path.substring(i) }.forEach {
+                                append("\t\t<li><a href=\"").append(it).append("\">").append(it).append("</a></li>\n")
+                            }
+                            append("\t</ul>")
+                            toString()
+                        })
+                        File(it, "index.html").writeBytes(str.toByteArray())
+                    }
                 }
             }
             super.load(compiler, ctx)

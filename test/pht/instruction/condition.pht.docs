@@ -1,0 +1,57 @@
+(category "condition"
+    (instr
+        (long "if")
+        (desc """
+            Конструкция условия @b{if}.
+            Выполняет @i{выражение A} при истинности условия.
+            Выполняет @i{выражение B} при ложности условия.
+            """)
+        (usage
+            "(if cond exprA)"
+            [["cond"]  "условие."]
+            [["exprA"] "выражение A."])
+        (usage
+            "(if cond exprA exprB)"
+            [["cond"]  "условие."]
+            [["exprA"] "выражение A."]
+            [["exprB"] "выражение B."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (def [[i 0]])
+                    (cycle (< i 10)
+                        (if (= (% i 2) 0)
+                            (println i))
+                        (++ i))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long  "condition")
+        (short "cond")
+        (desc """
+            Конструкция условия @b{cond}.
+            Выполняет @b{выражение N} при истинности @b{условия N}.
+            Иначе переходит к проверке следующего условия.
+            """)
+        (usage
+            "(condition [[cond expr] [cond expr]])"
+            [["cond"] "условие."]
+            [["expr"] "выражение."])
+        (usage
+            "(cond [[cond expr] [cond expr]])"
+            [["cond"] "условие."]
+            [["expr"] "выражение."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (def [[i -1]])
+                    (cycle (<= i 1)
+                        (cond [
+                            [(< i 0) (println "Меньше!")]
+                            [(= i 0) (println "Ноль!")]
+                            [(> i 0) (println "Больше!")]])
+                        (++ i))))
+            """
+            "Код работает на всех платформах!")))

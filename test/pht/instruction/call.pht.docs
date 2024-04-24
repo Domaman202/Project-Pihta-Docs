@@ -1,0 +1,97 @@
+(category "call"
+    (instr
+        (long  "ctor-call")
+        (short "ccall")
+        (desc  "Вызов конструктора предка.")
+        (usage
+            "(ctor-call arg0 argN)"
+            [["arg*"] "аргументы."])
+        (usage
+            "(ccall arg0 argN)"
+            [["arg*"] "аргументы."])
+        (example
+            """
+            (use-ctx pht
+                (cls Test [^Object]
+                    (ctor [] (ccall)))
+                (app-fn
+                    (println (new ^Test))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long  "method-call")
+        (short "mcall")
+        (desc  "Вызов метод.")
+        (usage
+            "(method-call type name arg0 argN)"
+            [["type"] "тип."]
+            [["name"] "имя."]
+            [["arg*"] "аргументы."])
+        (usage
+            "(method-call instance name arg0 argN)"
+            [["instance"] "объект."]
+            [["name"]     "имя."]
+            [["arg*"]     "аргументы."])
+        (usage
+            "(method-call . name arg0 argN)"
+            [["name"] "имя."]
+            [["arg*"] "аргументы."])
+        (usage
+            "(mcall type name arg0 argN)"
+            [["type"] "тип."]
+            [["name"] "имя."]
+            [["arg*"] "аргументы."])
+        (usage
+            "(mcall instance name arg0 argN)"
+            [["instance"] "объект."]
+            [["name"]     "имя."]
+            [["arg*"]     "аргументы."])
+        (usage
+            "(mcall . name arg0 argN)"
+            [["name"] "имя."]
+            [["arg*"] "аргументы."])
+        (usage
+            "(#name type arg0 argN)"
+            [["type"] "тип."]
+            [["name"] "имя."]
+            [["arg*"] "аргументы."])
+        (usage
+            "(#name instance name arg0 argN)"
+            [["instance"] "объект."]
+            [["name"]     "имя."]
+            [["arg*"]     "аргументы."])
+        (usage
+            "(#name . arg0 argN)"
+            [["name"] "имя."]
+            [["arg*"] "аргументы."])
+        (example
+            """
+            (use-ctx pht
+                (app
+                    (defn foo ^void []
+                        (println "Foo!"))
+                    (app-fn
+                        (mcall ^App foo))))
+            """
+            "Код работает на всех платформах!")
+        (example
+            """
+            (use-ctx pht
+                (app
+                    (defn foo ^void []
+                        (println "Foo!"))
+                    (app-fn
+                        (#foo ^App))))
+            """
+            "Код работает на всех платформах!")
+        (example
+            """
+            (use-ctx pht
+                (cls Test [^Object]
+                    (ctor [] (ccall))
+                    (defn foo ^void []
+                        (println "Foo!")))
+                (app-fn
+                    (#foo (new ^Test))))
+            """
+            "Код работает на всех платформах!")))

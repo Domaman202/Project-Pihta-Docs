@@ -5,9 +5,9 @@
         (desc  "Приводит значение к типу и выполняет подставку generic-ок к итоговому типу.")
         (usage
             "(as-generics type value type0 typeN)"
-            [["type"] "тип."]
+            [["type"]  "тип."]
             [["value"] "значение."]
-            [["type0" "typeN"] "generic-и."])
+            [["type*"] "generic-и."])
         (example
             """
             (use-ctx pht
@@ -23,19 +23,19 @@
         (short "cls")
         (desc  "Определение класса.")
         (usage
-            "(class [[nameG0 typeG0] [nameGN typeGN]] name [type0 typeN] expr0 exprN)"
-            [["nameG0" "nameGN"] "имя generic-а."]
-            [["typeG0" "typeGN"] "тип generic-а."]
-            [["name"] "имя."]
-            [["type0" "typeN"] "предки."]
-            [["expr0" "exprN"] "тело."])
+            "(class [[nameG typeG] [nameG typeG]] name [type0 typeN] expr0 exprN)"
+            [["nameG"] "имя generic-а."]
+            [["typeG"] "тип generic-а."]
+            [["name"]  "имя."]
+            [["type*"] "предки."]
+            [["expr*"] "тело."])
         (usage
-            "(cls [[nameG0 typeG0] [nameGN typeGN]] name [type0 typeN] expr0 exprN)"
-            [["nameG0" "nameGN"] "имя generic-а."]
-            [["typeG0" "typeGN"] "тип generic-а."]
-            [["name"] "имя."]
-            [["type0" "typeN"] "предки."]
-            [["expr0" "exprN"] "тело."])
+            "(cls [[nameG typeG] [nameG typeG]] name [type0 typeN] expr0 exprN)"
+            [["nameG"] "имя generic-а."]
+            [["typeG"] "тип generic-а."]
+            [["name"]  "имя."]
+            [["type*"]  "предки."]
+            [["expr*"] "тело."])
         (example
             """
             (use-ctx pht
@@ -51,21 +51,21 @@
         (short "defn")
         (desc  "Определение метода.")
         (usage
-            "(def-func [[nameG0 typeG0] [nameGN typeGN]] name typeR [[arg0 type0] [argN typeN]] expr0 exprN)"
-            [["nameG0" "nameGN"] "имя generic-а."]
-            [["typeG0" "typeGN"] "тип generic-а."]
-            [["name"] "имя."]
-            [["typeR"] "возвращаемый тип."]
-            [["arg0" "argN"] "имя аргумента."]
-            [["type0" "typeN"] "тип аргумента."]
-            [["expr0" "exprN"] "тело."])
+            "(def-func [[nameG typeG] [nameG typeG]] name typeR [[arg typeA] [arg typeA]] expr0 exprN)"
+            [["nameG*"] "имя generic-а."]
+            [["typeG*"] "тип generic-а."]
+            [["name"]   "имя."]
+            [["typeR"]  "возвращаемый тип."]
+            [["arg"]    "имя аргумента."]
+            [["typeA"]  "тип аргумента."]
+            [["expr*"]  "тело."])
         (usage
-            "(defn [[nameG0 typeG0] [nameGN typeGN]] name typeR [[arg0 type0] [argN typeN]] expr0 exprN)"
-            [["name"] "имя."]
+            "(defn [[nameG typeG] [nameG typeG]] name typeR [[arg typeA] [arg typeA]] expr0 exprN)"
+            [["name"]  "имя."]
             [["typeR"] "возвращаемый тип."]
-            [["arg0" "argN"] "имя аргумента."]
-            [["type0" "typeN"] "тип аргумента."]
-            [["expr0" "exprN"] "тело."])
+            [["arg"]   "имя аргумента."]
+            [["typeA"] "тип аргумента."]
+            [["expr*"] "тело."])
         (example
             """
             (use-ctx pht
@@ -80,25 +80,25 @@
         (short "efn")
         (desc  "Определение метода-расширения.")
         (usage
-            "(def-ext-func [[nameG0 typeG0] [nameGN typeGN]] typeE name typeR [[arg0 type0] [argN typeN]] expr0 exprN)"
-            [["nameG0" "nameGN"] "имя generic-а."]
-            [["typeG0" "typeGN"] "тип generic-а."]
+            "(def-ext-func [[nameG typeG] [nameG typeG]] typeE name typeR [[arg typeA] [arg typeA]] expr0 exprN)"
+            [["nameG"] "имя generic-а."]
+            [["typeG"] "тип generic-а."]
             [["typeE"] "расширяемый тип."]
-            [["name"] "имя."]
+            [["name"]  "имя."]
             [["typeR"] "возвращаемый тип."]
-            [["arg0" "argN"] "имя аргумента."]
-            [["type0" "typeN"] "тип аргумента."]
-            [["expr0" "exprN"] "тело."])
+            [["arg"]   "имя аргумента."]
+            [["typeA"] "тип аргумента."]
+            [["expr*"] "тело."])
         (usage
-            "(efn [[nameG0 typeG0] [nameGN typeGN]] typeE name typeR [[arg0 type0] [argN typeN]] expr0 exprN)"
-            [["nameG0" "nameGN"] "имя generic-а."]
-            [["typeG0" "typeGN"] "тип generic-а."]
+            "(efn [[nameG typeG] [nameG typeG]] typeE name typeR [[arg typeA] [arg typeA]] expr0 exprN)"
+            [["nameG"] "имя generic-а."]
+            [["typeG"] "тип generic-а."]
             [["typeE"] "расширяемый тип."]
-            [["name"] "имя."]
+            [["name"]  "имя."]
             [["typeR"] "возвращаемый тип."]
-            [["arg0" "argN"] "имя аргумента."]
-            [["type0" "typeN"] "тип аргумента."]
-            [["expr0" "exprN"] "тело."])
+            [["arg"]   "имя аргумента."]
+            [["typeA"] "тип аргумента."]
+            [["expr*"] "тело."])
         (example
             """
             (use-ctx pht

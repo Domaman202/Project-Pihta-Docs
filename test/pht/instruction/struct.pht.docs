@@ -5,14 +5,14 @@
         (desc  "Определение класса.")
         (usage
             "(class name [type0 typeN] expr0 exprN)"
-            [["name"] "имя."]
-            [["type0" "typeN"] "предки."]
-            [["expr0" "exprN"] "тело."])
+            [["name"]  "имя."]
+            [["type*"] "предки."]
+            [["expr*"] "тело."])
         (usage
             "(cls name [type0 typeN] expr0 exprN)"
-            [["name"] "имя."]
-            [["type0" "typeN"] "предки."]
-            [["expr0" "exprN"] "тело."])
+            [["name"]  "имя."]
+            [["type*"] "предки."]
+            [["expr*"] "тело."])
         (example
             """
             (use-ctx pht
@@ -30,14 +30,14 @@
         (desc  "Определение интерфейса.")
         (usage
             "(interface name [type0 typeN] expr0 exprN)"
-            [["name"] "имя."]
-            [["type0" "typeN"] "предки."]
-            [["expr0" "exprN"] "тело."])
+            [["name"]  "имя."]
+            [["type*"] "предки."]
+            [["expr*"] "тело."])
         (usage
             "(itf name [type0 typeN] expr0 exprN)"
-            [["name"] "имя."]
-            [["type0" "typeN"] "предки."]
-            [["expr0" "exprN"] "тело."])
+            [["name"]  "имя."]
+            [["type*"] "предки."]
+            [["expr*"] "тело."])
         (example
             """
             (use-ctx pht
@@ -57,14 +57,14 @@
         (desc  "Определение объекта.")
         (usage
             "(object name [type0 typeN] expr0 exprN)"
-            [["name"] "имя."]
-            [["type0" "typeN"] "предки."]
-            [["expr0" "exprN"] "тело."])
+            [["name"]  "имя."]
+            [["type*"] "предки."]
+            [["expr*"] "тело."])
         (usage
             "(obj name [type0 typeN] expr0 exprN)"
-            [["name"] "имя."]
-            [["type0" "typeN"] "предки."]
-            [["expr0" "exprN"] "тело."])
+            [["name"]  "имя."]
+            [["type*"] "предки."]
+            [["expr*"] "тело."])
         (example
             """
             (use-ctx pht
@@ -81,9 +81,9 @@
         (desc "Определение перечисления.")
         (usage
             "(enum name [type0 typeN] expr0 exprN)"
-            [["name"] "имя."]
-            [["type0" "typeN"] "предки."]
-            [["expr0" "exprN"] "тело."])
+            [["name"]  "имя."]
+            [["type*"] "предки."]
+            [["expr*"] "тело."])
         (example
             """
             (use-ctx pht

@@ -4,15 +4,15 @@
         (short "ctor")
         (desc  "Определение конструктора.")
         (usage
-            "(def-ctor [[arg0 type0] [argN typeN]] expr0 exprN)"
-            [["arg0" "argN"] "имя аргумента."]
-            [["type0" "typeN"] "тип аргумента."]
-            [["expr0" "exprN"] "тело."])
+            "(def-ctor [[arg type] [arg type]] expr0 exprN)"
+            [["arg"]   "имя аргумента."]
+            [["type"]  "тип аргумента."]
+            [["expr*"] "тело."])
         (usage
-            "(ctor [[arg0 type0] [argN typeN]] expr0 exprN)"
-            [["arg0" "argN"] "имя аргумента."]
-            [["type0" "typeN"] "тип аргумента."]
-            [["expr0" "exprN"] "тело."])
+            "(ctor [[arg type] [arg type]] expr0 exprN)"
+            [["arg"]   "имя аргумента."]
+            [["type"]  "тип аргумента."]
+            [["expr*"] "тело."])
         (example
             """
             (use-ctx pht
@@ -30,15 +30,15 @@
         (short "ector")
         (desc  "Определение конструктора перечисления.")
         (usage
-            "(def-enum-ctor [[arg0 type0] [argN typeN]] expr0 exprN)"
-            [["arg0" "argN"] "имя аргумента."]
-            [["type0" "typeN"] "тип аргумента."]
-            [["expr0" "exprN"] "тело."])
+            "(def-enum-ctor [[arg type] [arg type]] expr0 exprN)"
+            [["arg"]   "имя аргумента."]
+            [["type"]  "тип аргумента."]
+            [["expr*"] "тело."])
         (usage
-            "(ector [[arg0 type0] [argN typeN]] expr0 exprN)"
-            [["arg0" "argN"] "имя аргумента."]
-            [["type0" "typeN"] "тип аргумента."]
-            [["expr0" "exprN"] "тело."])
+            "(ector [[arg type] [arg type]] expr0 exprN)"
+            [["arg"]   "имя аргумента."]
+            [["type"]  "тип аргумента."]
+            [["expr*"] "тело."])
         (example
             """
             (use-ctx pht
@@ -64,19 +64,19 @@
         (short "defn")
         (desc  "Определение метода.")
         (usage
-            "(def-func name typeR [[arg0 type0] [argN typeN]] expr0 exprN)"
-            [["name"] "имя."]
+            "(def-func name typeR [[arg typeA] [arg typeA]] expr0 exprN)"
+            [["name"]  "имя."]
             [["typeR"] "возвращаемый тип."]
-            [["arg0" "argN"] "имя аргумента."]
-            [["type0" "typeN"] "тип аргумента."]
-            [["expr0" "exprN"] "тело."])
+            [["arg"]   "имя аргумента."]
+            [["typeA"] "тип аргумента."]
+            [["expr*"] "тело."])
         (usage
-            "(defn name typeR [[arg0 type0] [argN typeN]] expr0 exprN)"
-            [["name"] "имя."]
+            "(defn name typeR [[arg typeA] [arg typeA]] expr0 exprN)"
+            [["name"]  "имя."]
             [["typeR"] "возвращаемый тип."]
-            [["arg0" "argN"] "имя аргумента."]
-            [["type0" "typeN"] "тип аргумента."]
-            [["expr0" "exprN"] "тело."])
+            [["arg"]   "имя аргумента."]
+            [["typeA"] "тип аргумента."]
+            [["expr*"] "тело."])
         (example
             """
             (use-ctx pht
@@ -92,21 +92,21 @@
         (short "efn")
         (desc  "Определение метода-расширения.")
         (usage
-            "(def-ext-func typeE name typeR [[arg0 type0] [argN typeN]] expr0 exprN)"
+            "(def-ext-func typeE name typeR [[arg typeA] [arg typeA]] expr0 exprN)"
             [["typeE"] "расширяемый тип."]
-            [["name"] "имя."]
+            [["name"]  "имя."]
             [["typeR"] "возвращаемый тип."]
-            [["arg0" "argN"] "имя аргумента."]
-            [["type0" "typeN"] "тип аргумента."]
-            [["expr0" "exprN"] "тело."])
+            [["arg"]   "имя аргумента."]
+            [["typeA"] "тип аргумента."]
+            [["expr*"] "тело."])
         (usage
-            "(efn typeE name typeR [[arg0 type0] [argN typeN]] expr0 exprN)"
+            "(efn typeE name typeR [[arg typeA] [arg typeA]] expr0 exprN)"
             [["typeE"] "расширяемый тип."]
-            [["name"] "имя."]
+            [["name"]  "имя."]
             [["typeR"] "возвращаемый тип."]
-            [["arg0" "argN"] "имя аргумента."]
-            [["type0" "typeN"] "тип аргумента."]
-            [["expr0" "exprN"] "тело."])
+            [["arg"]   "имя аргумента."]
+            [["typeA"] "тип аргумента."]
+            [["expr*"] "тело."])
         (example
             """
             (use-ctx pht
@@ -123,24 +123,28 @@
         (desc  "Создаёт безымянную функцию, возвращает ссылку на неё.")
         (usage
             "(lambda type [nameV0 nameVN] [nameA0 nameAN] expr0 exprN)"
-            [["type"] "тип ссылки."]
-            [["nameV0" "nameVN"] "внешние переменные."]
-            [["nameA0" "nameAN"] "аргументы."])
+            [["type"]   "тип ссылки."]
+            [["nameV*"] "внешние переменные."]
+            [["nameA*"] "аргументы."]
+            [["expr*"]  "тело."])
         (usage
             "(lambda [nameV0 nameVN] [nameA0 nameAN] expr0 exprN)"
-            [["type"] "тип ссылки."]
-            [["nameV0" "nameVN"] "внешние переменные."]
-            [["nameA0" "nameAN"] "аргументы."])
+            [["type"]   "тип ссылки."]
+            [["nameV*"] "внешние переменные."]
+            [["nameA*"] "аргументы."]
+            [["expr*"]  "тело."])
         (usage
             "(fn type [nameV0 nameVN] [nameA0 nameAN] expr0 exprN)"
-            [["type"] "тип ссылки."]
-            [["nameV0" "nameVN"] "внешние переменные."]
-            [["nameA0" "nameAN"] "аргументы."])
+            [["type"]   "тип ссылки."]
+            [["nameV*"] "внешние переменные."]
+            [["nameA*"] "аргументы."]
+            [["expr*"]  "тело."])
         (usage
             "(fn [nameV0 nameVN] [nameA0 nameAN] expr0 exprN)"
-            [["type"] "тип ссылки."]
-            [["nameV0" "nameVN"] "внешние переменные."]
-            [["nameA0" "nameAN"] "аргументы."])
+            [["type"]   "тип ссылки."]
+            [["nameV*"] "внешние переменные."]
+            [["nameA*"] "аргументы."]
+            [["expr*"]  "тело."])
         (example
             """
             (use-ctx pht

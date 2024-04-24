@@ -5,10 +5,10 @@
         (desc   "Сложение @i{нескольких} значений.")
         (usage
             "(add arg0 argN)"
-            [["arg0" "argN"] "значения."])
+            [["arg*"] "значения."])
         (usage
             "(+ arg0 argN)"
-            [["arg0" "argN"] "значения."])
+            [["arg*"] "значения."])
         (example
             """
             (use-ctx pht
@@ -22,10 +22,10 @@
         (desc   "Вычитание @i{нескольких} значений.")
         (usage
             "(sub arg0 argN)"
-            [["arg0" "argN"] "значения."])
+            [["arg*"] "значения."])
         (usage
             "(- arg0 argN)"
-            [["arg0" "argN"] "значения."])
+            [["arg*"] "значения."])
         (example
             """
             (use-ctx pht
@@ -39,10 +39,10 @@
         (desc   "Умножение @i{нескольких} значений.")
         (usage
             "(mul arg0 argN)"
-            [["arg0" "argN"] "значения."])
+            [["arg*"] "значения."])
         (usage
             "(* arg0 argN)"
-            [["arg0" "argN"] "значения."])
+            [["arg*"] "значения."])
         (example
             """
             (use-ctx pht
@@ -56,10 +56,10 @@
         (desc   "Деление @i{нескольких} значений.")
         (usage
             "(div arg0 argN)"
-            [["arg0" "argN"] "значения."])
+            [["arg*"] "значения."])
         (usage
             "(/ arg0 argN)"
-            [["arg0" "argN"] "значения."])
+            [["arg*"] "значения."])
         (example
             """
             (use-ctx pht
@@ -73,10 +73,10 @@
         (desc   "Взятие остатка от деления @i{нескольких} значений.")
         (usage
             "(rem arg0 argN)"
-            [["arg0" "argN"] "значения."])
+            [["arg*"] "значения."])
         (usage
             "(% arg0 argN)"
-            [["arg0" "argN"] "значения."])
+            [["arg*"] "значения."])
         (example
             """
             (use-ctx pht
@@ -102,13 +102,13 @@
         (symbol "<<")
         (desc   "Битовые сдвиг @i{одного} значения влево.")
         (usage
-            "(shift-left argA argB)"
-            [["argA"] "значение."]
-            [["argB"] "сдвиг."])
+            "(shift-left value offset)"
+            [["value"]  "значение."]
+            [["offset"] "сдвиг."])
         (usage
-            "(<< argA argB)"
-            [["argA"] "значение."]
-            [["argB"] "сдвиг."])
+            "(<< value offset)"
+            [["value"]  "значение."]
+            [["offset"] "сдвиг."])
         (example
             """
             (use-ctx pht
@@ -121,13 +121,13 @@
         (symbol ">>")
         (desc "Битовые сдвиг @i{одного} значения вправо.")
         (usage
-            "(shift-right argA argB)"
-            [["argA"] "значение."]
-            [["argB"] "сдвиг."])
+            "(shift-right value offset)"
+            [["value"]  "значение."]
+            [["offset"] "сдвиг."])
         (usage
-            "(>> argA argB)"
-            [["argA"] "значение."]
-            [["argB"] "сдвиг."])
+            "(>> value offset)"
+            [["value"]  "значение."]
+            [["offset"] "сдвиг."])
         (example
             """
             (use-ctx pht

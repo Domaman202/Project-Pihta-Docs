@@ -4,9 +4,9 @@
         (desc "Определяет макрос.")
         (usage
             "(def-macro name [arg0 argN] expr0 exprN)"
-            [["name"] "имя макроса."]
-            [["arg0" "argN"] "аргументы макроса."]
-            [["expr0" "exprN"] "тело макроса."])
+            [["name"]  "имя."]
+            [["arg*"]  "аргументы."]
+            [["expr*"] "тело."])
         (example
             """
             (use-ctx pht
@@ -21,12 +21,12 @@
         (desc "Вставка макроса.")
         (usage
             "(name arg0 argN)"
-            [["name"] "имя макроса."]
-            [["arg0" "argN"] "аргументы макроса."])
+            [["name"] "имя."]
+            [["arg*"] "аргументы."])
         (usage
             "(macro name arg0 argN)"
-            [["name"] "имя макроса."]
-            [["arg0" "argN"] "аргументы макроса."])
+            [["name"] "имя."]
+            [["arg*"] "аргументы."])
         (example
             """
             (use-ctx pht
@@ -50,7 +50,7 @@
         (desc "Вставка аргумента макроса.")
         (usage
             "(macro-arg name)"
-            [["name"] "имя аргумента."])
+            [["name"] "имя."])
         (example
             """
             (use-ctx pht
@@ -64,9 +64,9 @@
         (long "macro-inline")
         (desc "Указание жёсткого встраивания аргументов макроса в пределах выражения.")
         (usage
-            "(macro-inline [name0 nameN] expr)"
-            [["arg0" "argN"] "имена аргументов."]
-            [["expr"] "выражение."])
+            "(macro-inline [name0 nameN] expr0 exprN)"
+            [["name*"] "имена."]
+            [["expr*"] "выражение."])
         (example
             """
             (use-ctx pht

@@ -4,7 +4,7 @@
         (desc "Создаёт под-контекст и выполняет выражения.")
         (usage
             "(body expr0 exprN)"
-            [["expr0" "exprN"] "выражения."])
+            [["expr*"] "выражения."])
         (example
             """
             (use-ctx pht
@@ -24,11 +24,11 @@
         (usage
             "(named-block name expr0 exprN)"
             [["name"] "имя."]
-            [["expr0" "exprN"] "выражения."])
+            [["expr*"] "выражения."])
         (usage
             "(nblock name expr0 exprN)"
             [["name"] "имя."]
-            [["expr0" "exprN"] "выражения."])
+            [["expr*"] "выражения."])
         (example
             """
             (use-ctx pht

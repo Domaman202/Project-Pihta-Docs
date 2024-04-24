@@ -4,13 +4,13 @@
         (short "arr-of-type")
         (desc  "Создаёт массив из элементов с определённым типом.")
         (usage
-            "(array-of-type ^type arg0 argN)"
-            [["^type"] "тип."]
-            [["arg0" "argN"] "элементы."])
+            "(array-of-type type arg0 argN)"
+            [["type"] "тип."]
+            [["arg*"] "элементы."])
         (usage
-            "(arr-of-type ^type arg0 argN)"
-            [["^type"] "тип."]
-            [["arg0" "argN"] "элементы."])
+            "(arr-of-type type arg0 argN)"
+            [["type"] "тип."]
+            [["arg*"] "элементы."])
         (example
             """
             (use-ctx pht
@@ -24,10 +24,10 @@
         (desc  "Создаёт массив из элементов.")
         (usage
             "(array-of arg0 argN)"
-            [["arg0" "argN"] "элементы."])
+            [["arg*"] "элементы."])
         (usage
             "(arr-of arg0 argN)"
-            [["arg0" "argN"] "элементы."])
+            [["arg*"] "элементы."])
         (example
             """
             (use-ctx pht
@@ -57,10 +57,10 @@
         (short "arr-type")
         (desc  "Создаёт @i{тип массива} из @i{типа элементов}.")
         (usage
-            "(array-type ^type)"
+            "(array-type type)"
             [["type"] "тип элементов."])
         (usage
-            "(arr-type ^type)"
+            "(arr-type type)"
             [["type"] "тип элементов."])
         (example
             """

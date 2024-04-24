@@ -19,7 +19,7 @@
         (desc "Комментарий, игнорируется на уровне парсинга.")
         (usage
             "(comment arg0 argN)"
-            [["arg0" "argN"] "аргументы."])
+            [["arg*"] "аргументы."])
         (example
             """
             (use-ctx pht
@@ -32,8 +32,8 @@
         (long "alias-type")
         (desc "Создаёт псевдоним типа.")
         (usage
-            "(alias-type [[type0 alias0][typeN aliasN]])"
-            [["type"] "тип."]
+            "(alias-type [[type alias] [type alias]])"
+            [["type"]  "тип."]
             [["alias"] "псевдоним."])
         (example
             """

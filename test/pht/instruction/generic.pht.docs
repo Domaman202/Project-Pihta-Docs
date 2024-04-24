@@ -2,7 +2,7 @@
     (instr
         (long  "as-generics")
         (short "as-gens")
-        (desc  "Приводит значение к типу и выполняет подставку generic-ок к итоговому типу.")
+        (desc  "Приводит значение к типу и выполняет подставку generic-ов к итоговому типу.")
         (usage
             "(as-generics type value type0 typeN)"
             [["type"]  "тип."]
@@ -15,6 +15,27 @@
                     (def [[list (as-gens ^java.util.List (new ^java.util.ArrayList) ^String)]])
                     (#add list "Hi!")
                     (println (typeof list))
+                    (println (typeof (#get list 0)))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long  "with-generics")
+        (short "with-gens")
+        (desc  "Выполняет подставку generic-ов к типу.")
+        (usage
+            "(with-generics expr type0 typeN)"
+            [["expr"]  "выражение."]
+            [["type*"] "generic-и."])
+        (usage
+            "(with-gens expr type0 typeN)"
+            [["expr"]  "выражение."]
+            [["type*"] "generic-и."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (def [[list (with-gens (new ^java.util.ArrayList) ^String)]])
+                    (#add list "Hi!")
                     (println (typeof (#get list 0)))))
             """
             "Код работает на всех платформах!"))

@@ -108,4 +108,28 @@
                     (app-fn
                         (#foo .))))
             """
+            "Код работает на всех платформах!"))
+    (instr
+        (long "@varargs")
+        (desc """
+            Аннотация @b{varargs}.
+            Применяется к выражениям типа:
+            1. @b{метод}
+            """)
+        (usage
+            "(debug expr0 exprN)"
+            [["expr*"] "выражения."])
+        (example
+            """
+            (use-ctx pht
+                (cls StringExtends [^Object]
+                    (@varargs
+                    (efn ^String sub ^String [[arr (array-type ^String)]] (progn
+                        (def [[str (new ^StringBuilder this)]])
+                        (for [e arr]
+                            (#append str e))
+                        (#toString str)))))
+                (app-fn
+                    (println (- "Слава " "России!"))))
+            """
             "Код работает на всех платформах!")))

@@ -94,4 +94,28 @@
                 (app-fn
                     (#foo (new ^Test))))
             """
+            "Код работает на всех платформах!"))
+    (instr
+        (long  "tailrec-call")
+        (short "trcall")
+        (desc  "Рекурсивный вызов текущей функции.")
+        (usage
+            "(tailrec-call arg0 argN)"
+            [["arg*"] "аргументы."])
+        (usage
+            "(trcall arg0 argN)"
+            [["arg*"] "аргументы."])
+        (example
+            """
+            (use-ctx pht
+                (app
+                    (defn fac ^int [[i ^int][r ^int]]
+                        (if (< i 1)
+                            r
+                            (trcall (- i 1) (* i r))))
+                    (defn fac ^int [[i ^int]]
+                        (#fac . i 1))
+                    (app-fn
+                        (println (#fac . 4)))))
+            """
             "Код работает на всех платформах!")))

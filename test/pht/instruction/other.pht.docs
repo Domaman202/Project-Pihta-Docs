@@ -42,4 +42,18 @@
                     (alias-type [[java.lang.Integer i32]])
                     (println ^i32)))
             """
+            "Код работает на всех платформах!"))
+    (instr
+        (long "as")
+        (desc "Приводит значение к типу.")
+        (usage
+            "(as type value)"
+            [["type"]  "тип."]
+            [["value"] "значение."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (as ^double 33))))
+            """
             "Код работает на всех платформах!")))

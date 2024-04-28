@@ -103,4 +103,17 @@
                 (app-fn
                     (println ^Colors/RED)))
             """
+            "Код работает на всех платформах!"))
+    (instr
+        (long "app")
+        (desc "Определение класса приложения.")
+        (usage
+            "(app expr0 exprN)"
+            [["expr*"] "тело."])
+        (example
+            """
+            (use-ctx pht
+                (app (defn main ^void []
+                    (println "Апчхи!"))))
+            """
             "Код работает на всех платформах!")))

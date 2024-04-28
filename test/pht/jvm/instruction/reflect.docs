@@ -1,0 +1,14 @@
+(category "reflect"
+    (instr
+        (long "class-of")
+        (desc "Получает @i{java.lang.Class} типа.")
+        (usage
+            "(class-of type)"
+            [["type"] "тип."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (#getName (class-of ^Object)))))
+            """
+            "Код работает на платформе @b{jvm}!")))

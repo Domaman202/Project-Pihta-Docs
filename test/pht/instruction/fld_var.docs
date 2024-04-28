@@ -1,0 +1,248 @@
+(category "fields and variables"
+    (instr
+        (long "def")
+        (desc "Определение переменной или поля.")
+        (usage
+            "(define [[type name value] [type name value]])"
+            [["type"]  "тип."]
+            [["name"]  "имя."]
+            [["value"] "значение."])
+        (usage
+            "(define [[name value] [name value]])"
+            [["name"]  "имя."]
+            [["value"] "значение."])
+        (usage
+            "(define [[name type] [name type]])"
+            [["name"] "имя."]
+            [["type"] "тип."])
+        (usage
+            "(def [[type name value] [type name value]])"
+            [["type"]  "тип."]
+            [["name"]  "имя."]
+            [["value"] "значение."])
+        (usage
+            "(def [[name value] [name value]])"
+            [["name"]  "имя."]
+            [["value"] "значение."])
+        (usage
+            "(def [[name type] [name type]])"
+            [["name"] "имя."]
+            [["type"] "тип."])
+        (example
+            """
+            (use-ctx pht
+                (cls Test [^Object]
+                    (def [[i ^int]])
+                    (ctor [] (ccall)))
+                (app-fn
+                    (def [[o (new ^Test)]])
+                    (set o/i 12)
+                    (println o/i)))
+            """
+            "Код работает на всех платформах!")
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (def [[^int i 21]])
+                    (println i)))
+            """
+            "Код работает на всех платформах!")
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (def [[^int i]])
+                    (set i 33)
+                    (println i)))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long "fld")
+        (desc "Определение поля, включая геттер и сеттер.")
+        (usage
+            "(field [[name type] [name type]])"
+            [["name"] "имя."]
+            [["type"] "тип."])
+        (example
+            """
+            (use-ctx pht
+                (cls Test [^Object]
+                    (fld [[i ^int]])
+                    (ctor [] (ccall)))
+                (app-fn
+                    (def [[o (new ^Test)]])
+                    (set o/i 12)
+                    (println o/i)))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long  "enum-fld")
+        (short "efld")
+        (desc  "Определение поля и экземпляра перечисления.")
+        (usage
+            "(enum-fld [[name arg0 argN] [name arg0 argN]])"
+            [["name"] "имя."]
+            [["arg*"] "аргументы."])
+        (usage
+            "(efld [[name arg0 argN] [name arg0 argN]])"
+            [["name"] "имя."]
+            [["arg*"] "аргументы."])
+        (example
+            """
+            (use-ctx pht
+                (enum Colors [^Enum]
+                    (ector [[r ^int] [g ^int] [b ^int]]
+                        (set this/red r)
+                        (set this/green g)
+                        (set this/blue b))
+                    (fld [
+                        [red    ^int]
+                        [green  ^int]
+                        [blue   ^int]])
+                    (efld [
+                        [RED    255 0 0]
+                        [GREEN  0 255 0]
+                        [BLUE   0 0 255]]))
+                (app-fn
+                    (println ^Colors/RED)))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long "set")
+        (desc "Устанавливает значение в @b{переменную} или @b{поле}.")
+        (usage
+            "(set name value)"
+            [["name"]  "имя."]
+            [["value"] "значение."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (def [[^int i]])
+                    (set i 12)
+                    (println i)))
+            """
+            "Код работает на всех платформах!")
+        (example
+            """
+            (use-ctx pht
+                (app
+                    (def [[j ^int]])
+                    (app-fn
+                        (set j 21)
+                        (println j))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long "get")
+        (desc "Получает значение @b{переменной} или @b{поля}.")
+        (usage
+            "(get name)"
+            [["name"]  "имя."])
+        (usage
+            "name"
+            [["name"] "имя."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (def [[^int i]])
+                    (set i 12)
+                    (println i)))
+            """
+            "Код работает на всех платформах!")
+        (example
+            """
+            (use-ctx pht
+                (app
+                    (def [[j ^int]])
+                    (app-fn
+                        (set j 21)
+                        (println j))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long  "fld-set")
+        (short "fset")
+        (desc  "Устанавливает значение в поле.")
+        (usage
+            "(fld-set type name value)"
+            [["type"]  "тип."]
+            [["name"]  "имя."]
+            [["value"] "значение."])
+        (usage
+            "(fld-set instance name value)"
+            [["instance"] "объект."]
+            [["name"]     "имя."]
+            [["value"]    "значение."])
+        (usage
+            "(set type/name value)"
+            [["type"]  "тип."]
+            [["name"]  "имя."]
+            [["value"] "значение."])
+        (usage
+            "(set instance/name value)"
+            [["instance"] "объект."]
+            [["name"]     "имя."]
+            [["value"]    "значение."])
+        (example
+            """
+            (use-ctx pht
+                (app
+                    (def [[i ^int]])
+                    (app-fn
+                        (fset ^App i 202)
+                        (println ^App/i))))
+            """
+            "Код работает на всех платформах!")
+        (example
+            """
+            (use-ctx pht
+                (app
+                    (def [[i ^int]])
+                    (app-fn
+                        (set ^App/i 203)
+                        (println ^App/i))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long  "fld-get")
+        (short "fget")
+        (desc  "Получает значение поля.")
+        (usage
+            "(fld-get type name)"
+            [["type"]  "тип."]
+            [["name"]  "имя."])
+        (usage
+            "(fld-get instance name)"
+            [["instance"] "объект."]
+            [["name"]     "имя."])
+        (usage
+            "(get type/name)"
+            [["type"]  "тип."]
+            [["name"]  "имя."])
+        (usage
+            "(get instance/name)"
+            [["instance"] "объект."]
+            [["name"]     "имя."])
+        (example
+            """
+            (use-ctx pht
+                (app
+                    (def [[i ^int]])
+                    (app-fn
+                        (set ^App/i 202)
+                        (println (fget ^App i)))))
+            """
+            "Код работает на всех платформах!")
+        (example
+            """
+            (use-ctx pht
+                (app
+                    (def [[i ^int]])
+                    (app-fn
+                        (set ^App/i 213)
+                        (println ^App/i))))
+            """
+            "Код работает на всех платформах!")))

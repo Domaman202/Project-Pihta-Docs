@@ -6,7 +6,7 @@ enum class ContextKeys : IContextKey {
     DOC_MODULE,
     CATEGORY,
     // lists
-    MODULES,
+    DOC_MODULES,
     CATEGORIES,
     INSTRUCTIONS
 }

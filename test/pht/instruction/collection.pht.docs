@@ -1,12 +1,7 @@
 (category "collection"
     (instr
-        (long  "array-of-type")
-        (short "arr-of-type")
-        (desc  "Создаёт массив из элементов с определённым типом.")
-        (usage
-            "(array-of-type type arg0 argN)"
-            [["type"] "тип."]
-            [["arg*"] "элементы."])
+        (long "arr-of-type")
+        (desc "Создаёт массив из элементов с определённым типом.")
         (usage
             "(arr-of-type type arg0 argN)"
             [["type"] "тип."]
@@ -15,16 +10,12 @@
             """
             (use-ctx pht
                 (app-fn
-                    (println (array-of-type ^Object 12 21 33))))
+                    (println (arr-of-type ^Object 12 21 33))))
             """
             "Код работает на всех платформах!"))
     (instr
-        (long  "array-of")
-        (short "arr-of")
-        (desc  "Создаёт массив из элементов.")
-        (usage
-            "(array-of arg0 argN)"
-            [["arg*"] "элементы."])
+        (long "arr-of")
+        (desc "Создаёт массив из элементов.")
         (usage
             "(arr-of arg0 argN)"
             [["arg*"] "элементы."])
@@ -32,16 +23,12 @@
             """
             (use-ctx pht
                 (app-fn
-                    (println (array-of 12 21 33))))
+                    (println (arr-of 12 21 33))))
             """
             "Код работает на всех платформах!"))
     (instr
-        (long  "array-size")
-        (short "arr-size")
-        (desc  "Возвращает размер массива.")
-        (usage
-            "(array-size arg)"
-            [["arg"] "массив."])
+        (long "arr-size")
+        (desc "Возвращает размер массива.")
         (usage
             "(arr-size arg)"
             [["arg"] "массив."])
@@ -49,16 +36,12 @@
             """
             (use-ctx pht
                 (app-fn
-                    (println (array-size (array-of 202 203 213 666 777 999)))))
+                    (println (arr-size (arr-of 202 203 213 666 777 999)))))
             """
             "Код работает на всех платформах!"))
     (instr
-        (long  "array-type")
-        (short "arr-type")
-        (desc  "Создаёт @i{тип массива} из @i{типа элементов}.")
-        (usage
-            "(array-type type)"
-            [["type"] "тип элементов."])
+        (long "arr-type")
+        (desc "Создаёт @i{тип массива} из @i{типа элементов}.")
         (usage
             "(arr-type type)"
             [["type"] "тип элементов."])
@@ -66,34 +49,15 @@
             """
             (use-ctx pht
                 (app-fn
-                    (println (array-size (array-of 202 203 213 666 777 999)))))
+                    (println (arr-size (arr-of 202 203 213 666 777 999)))))
             """
             "Код работает на всех платформах!"))
     (instr
-        (long  "array-get")
-        (short "aget")
-        (desc  "Получает значение элемента массива по индексу.")
-        (usage
-            "(array-get array index)"
-            [["array"] "массив."]
-            [["index"] "индекс."])
-        (usage
-            "(aget array index)"
-            [["array"] "массив."]
-            [["index"] "индекс."])
-        (example
-            """
-            (use-ctx pht
-                (app-fn
-                    (println (aget (array-of 12 21 33) 1))))
-            """
-            "Код работает на всех платформах!"))
-    (instr
-        (long  "array-set")
+        (long  "arr-set")
         (short "aset")
         (desc  "Устанавливает значение элемента массива по индексу.")
         (usage
-            "(array-set array index value)"
+            "(arr-set array index value)"
             [["array"] "массив."]
             [["index"] "индекс."]
             [["value"] "значение."])
@@ -106,23 +70,42 @@
             """
             (use-ctx pht
                 (app-fn
-                    (def [[arr (new-array ^int 4)]])
+                    (def [[arr (new-arr ^int 4)]])
                     (aset arr 0 12)
                     (aset arr 3 21)
                     (println (#contentToString arr))))
             """
             "Код работает на всех платформах!"))
     (instr
-        (long "new-array")
+        (long  "arr-get")
+        (short "aget")
+        (desc  "Получает значение элемента массива по индексу.")
+        (usage
+            "(arr-get array index)"
+            [["array"] "массив."]
+            [["index"] "индекс."])
+        (usage
+            "(aget array index)"
+            [["array"] "массив."]
+            [["index"] "индекс."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (aget (arr-of 12 21 33) 1))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long "new-arr")
         (desc "Создаёт массив заданного типа и размера.")
         (usage
-            "(new-array type size)"
+            "(new-arr type size)"
             [["type"] "тип."]
             [["size"] "размер."])
         (example
             """
             (use-ctx pht
                 (app-fn
-                    (println (#contentToString (new-array ^int 4)))))
+                    (println (#contentToString (new-arr ^int 4)))))
             """
             "Код работает на всех платформах!")))

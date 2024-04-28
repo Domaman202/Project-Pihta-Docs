@@ -1,5 +1,7 @@
 (progn
     (module "pht"
         (include pht/instruction/*))
+    (module "pht/jvm"
+        (include pht/jvm/instruction/*))
     (module "pht/cpp"
         (include pht/cpp/instruction/*)))

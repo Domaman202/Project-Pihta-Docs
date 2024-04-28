@@ -5,7 +5,7 @@ import ru.DmN.phtx.docs.html.PhtDocsHtml
 import ru.DmN.phtx.docs.html.utils.ctx.category
 import ru.DmN.phtx.docs.html.utils.ctx.doc_module
 import ru.DmN.phtx.docs.html.utils.ctx.instructions
-import ru.DmN.phtx.docs.html.utils.ctx.modules
+import ru.DmN.phtx.docs.html.utils.ctx.doc_modules
 import ru.DmN.phtx.docs.html.utils.format.formatToHTML
 import ru.DmN.phtx.docs.html.utils.format.normalize
 import ru.DmN.siberia.compiler.Compiler
@@ -26,7 +26,7 @@ object NCInstruction : INodeCompiler<NodeInstruction> {
                 "<--sidebar>",
                 StringBuilder().apply {
                     var i = 0
-                    compiler.modules.forEach { (module, categories) ->
+                    compiler.doc_modules.forEach { (module, categories) ->
                         if (i++ > 0)
                             append('\n')
                         append("\t\t<div class=\"module\"><div class=\"caption\">").append(module).append("</div>\n")

@@ -311,4 +311,29 @@
                     (app-fn
                         (#run-runnable . (rfn . . foo)))))
             """
-            "Код работает на @b{} платформе!")))
+            "Код работает на @b{} платформе!"))
+    (instr
+        (long  "app-func")
+        (short "app-fn")
+        (desc  "Определение функции приложения.")
+        (usage
+            "(app-func expr0 exprN)"
+            [["expr*"] "тело."])
+        (usage
+            "(app-fn expr0 exprN)"
+            [["expr*"] "тело."])
+        (example
+            """
+            (use-ctx pht
+                (app
+                    (app-fn
+                        (println "Слава России!"))))
+            """
+            "Код работает на всех платформах!")
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println "Слава Советскому Союзу!")))
+            """
+            "Код работает на всех платформах!")))

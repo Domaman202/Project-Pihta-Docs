@@ -80,4 +80,22 @@
                     (app-fn
                         (call-foo [12 21 33]))))
             """
+            "Код работает на всех платформах!"))
+    (instr
+        (long "macro-unroll")
+        (desc "Разворачивает аргументы макроса.")
+        (usage
+            "(macro-unroll [[argO argI] [argO argI]] expr0 exprN)"
+            [["argO"]  "выходной аргумент."]
+            [["argI"]  "входной аргумент."]
+            [["expr*"] "тело."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (def-macro print-args [argsA argsB]
+                        (macro-unroll [[a argsA] [b argsB]]
+                            (println (macro-arg a) (macro-arg b))))
+                    (print-args ["202" "203" "213"] ["Первый" "Второй" "Третий"])))
+            """
             "Код работает на всех платформах!")))

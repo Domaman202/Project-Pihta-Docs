@@ -11,4 +11,10 @@
                 (app-fn
                     (println (#getName (class-of ^Object)))))
             """
-            "Код работает на платформе @b{jvm}!")))
+            "Код работает на платформе @b{jvm}!"))
+    (instr
+        (long "symbol-cls")
+        (desc "Преобразует @b{символ} в @i{java.lang.Class}.")
+        (usage
+            "(symbol-cls symbol)"
+            [["symbol"] "символ."])))

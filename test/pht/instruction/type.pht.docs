@@ -1,0 +1,81 @@
+(category "type"
+    (instr
+        (long "as")
+        (desc "Приводит значение к типу.")
+        (usage
+            "(as type value)"
+            [["type"]  "тип."]
+            [["value"] "значение."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (as ^double 33))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long "is")
+        (desc "Проверяет значение на принадлежность к типу.")
+        (usage
+            "(is type value)"
+            [["type"]  "тип."]
+            [["value"] "значение."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (is ^int 33))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long "alias-type")
+        (desc "Создаёт псевдоним типа.")
+        (usage
+            "(alias-type [[type alias] [type alias]])"
+            [["type"]  "тип."]
+            [["alias"] "псевдоним."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (alias-type [[java.lang.Integer i32]])
+                    (println ^i32)))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long "arr-type")
+        (desc "Получает @i{тип массива} из @i{типа элементов}.")
+        (usage
+            "(arr-type type)"
+            [["type"] "тип элементов."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (arr-size (arr-of 202 203 213 666 777 999)))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long "comp-type")
+        (desc "Получает @i{тип элемента} из @i{типа массива}.")
+        (usage
+            "(comp-type type)"
+            [["type"] "тип массива."]))
+    (instr
+        (long "null-type")
+        (desc "Создаёт мета-тип который может быть null.")
+        (usage
+            "(null-type type)"
+            [["type"] "исходный тип."]))
+    (instr
+        (long "not-null-type")
+        (desc "Создаёт мета-тип который не может быть null.")
+        (usage
+            "(not-null-type type)"
+            [["type"] "исходный тип."]))
+    (instr
+        (long "clr-null-type")
+        (desc "Очистка принадлежности типа к null-safety.")
+        (usage
+            "(clr-null-type type)"
+            [["type"] "исходный тип."])))

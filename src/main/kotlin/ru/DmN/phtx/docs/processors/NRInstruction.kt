@@ -4,9 +4,9 @@ import ru.DmN.pht.processor.utils.computeList
 import ru.DmN.pht.processor.utils.computeString
 import ru.DmN.pht.utils.type
 import ru.DmN.phtx.docs.ast.NodeInstruction
-import ru.DmN.phtx.docs.ast.NodeInstruction.Example
 import ru.DmN.phtx.docs.ast.NodeInstruction.Usage
 import ru.DmN.phtx.docs.ast.NodeInstruction.Usage.Argument
+import ru.DmN.phtx.docs.utils.getTypeOr
 import ru.DmN.phtx.docs.utils.node.NodeTypes.*
 import ru.DmN.siberia.ast.NodeNodesList
 import ru.DmN.siberia.processor.Processor
@@ -36,10 +36,25 @@ object NRInstruction : INodeProcessor<NodeNodesList> {
 
                     EXAMPLE -> {
                         val data = processor.computeList(it, ctx)
-                        this.examples += Example(processor.computeString(data[0], ctx)).apply {
-                            if (data.size == 2) {
-                                this.desc = processor.computeString(data[1], ctx)
+                        if (processor.getTypeOr(data[0], ctx) == IValueProcessor.Type.LIST) {
+                            this.examples += processor.computeList(data[0], ctx).map {
+                                val pair = processor.computeList(it, ctx)
+                                Pair(
+                                    processor.computeString(pair[0], ctx),
+                                    if (pair.size == 2)
+                                        processor.computeString(pair[1], ctx)
+                                    else null
+                                )
                             }
+                        } else {
+                            this.examples += listOf(
+                                Pair(
+                                    processor.computeString(data[0], ctx),
+                                    if (data.size == 2)
+                                        processor.computeString(data[1], ctx)
+                                    else null
+                                )
+                            )
                         }
                     }
 
@@ -47,4 +62,8 @@ object NRInstruction : INodeProcessor<NodeNodesList> {
                 }
             }
         }
+
+    private fun processExample() {
+
+    }
 }

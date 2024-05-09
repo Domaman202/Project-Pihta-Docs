@@ -1,4 +1,6 @@
 (progn
+    (module "siberia"
+        (include siberia/instruction/*))
     (module "pht"
         (include pht/instruction/*))
     (module "pht/jvm"

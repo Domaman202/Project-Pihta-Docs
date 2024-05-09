@@ -4,8 +4,8 @@ import ru.DmN.phtx.docs.ast.NodeInstruction
 import ru.DmN.phtx.docs.html.PhtDocsHtml
 import ru.DmN.phtx.docs.html.utils.ctx.category
 import ru.DmN.phtx.docs.html.utils.ctx.doc_module
-import ru.DmN.phtx.docs.html.utils.ctx.instructions
 import ru.DmN.phtx.docs.html.utils.ctx.doc_modules
+import ru.DmN.phtx.docs.html.utils.ctx.instructions
 import ru.DmN.phtx.docs.html.utils.format.formatToHTML
 import ru.DmN.phtx.docs.html.utils.format.normalize
 import ru.DmN.siberia.compiler.Compiler
@@ -91,11 +91,16 @@ object NCInstruction : INodeCompiler<NodeInstruction> {
             str = str.replace(
                 "<--examples>",
                 StringBuilder().apply {
-                    node.examples.forEachIndexed { i, it1 ->
+                    node.examples.forEachIndexed { i, list ->
                         if (i > 0)
                             append('\n')
-                        append("\t\t<div class=\"example\">\n\t\t\t<pre class=\"code\">\n").append(it1.code).append("\t\t\t</pre>\n")
-                        it1.desc?.let { append("\t\t\t").append(formatToHTML(it, "class=\"border-margin\"")).append('\n') }
+                        append("\t\t<div class=\"example\">\n")
+                        list.forEach { pair ->
+                            append("\t\t\t<pre class=\"code\">\n").append(pair.first).append("\t\t\t</pre>\n")
+                            pair.second?.let {
+                                append("\t\t\t").append(formatToHTML(it, "class=\"border-margin\"")).append('\n')
+                            }
+                        }
                         append("\t\t</div>")
                     }
                 }.toString()

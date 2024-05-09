@@ -1,0 +1,110 @@
+(category "other"
+    (instr
+        (long "progn")
+        (desc """
+            Блок инструкций.
+            Может быть применён вне тела функции.
+            """)
+        (usage
+            "(progn expr0 exprN)"
+            [["expr*"] "инструкции."])
+        (example
+            """
+            (use-ctx pht
+                (progn
+                    (test-fn 0 "Тестовый код №0")
+                    (test-fn 1 "Тестовый код №1")
+                    (test-fn 2 "Тестовый код №2")))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long "use")
+        (desc """
+            Инструкция использования модулей в глобальном контексте.
+            @br(/siberia/other/instructions/use-ctx.html){Не рекомендуется к использованию!}
+            """)
+        (usage
+            "(use name0 nameN)"
+            [["name*"] "модули."])
+        (example
+            """
+            (progn
+                (use pht)
+                (app-fn
+                    (println "Внимание! Обнаружен опасный код!")))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long "use-ctx")
+        (desc "Инструкция использования модулей в локальном контексте блока.")
+        (usage
+            "(use-ctx name0 nameN expr0 exprN)"
+            [["name*"] "модули."]
+            [["expr*"] "выражения блока."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println "Внимание! Обнаружен безопасный код!")))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long "export")
+        (desc """
+            Блок инструкций.
+            Обрабатывается в месте @i{определения} @b{и} в месте @i{импорта} модуля.
+            """)
+        (usage
+            "(export expr0 exprN)"
+            [["expr*"] "инструкции."])
+        (example [
+            [
+                """
+                (use-ctx pht
+                    (test-fn 1 (*module-name*))
+                    (test-fn 2 (test-macro))
+                    (export
+                        (def-macro test-macro [] (*module-name*)))
+                    (only-export
+                        (test-fn 3 (test-macro))
+                        (test-fn 4 (*module-name*))))
+                """
+                "Файл @bi{src.pht} модуля @b{test/helper}."
+            ]
+            [
+                """
+                (use-ctx pht test/helper
+                    (test-fn 0 (*module-name*)))
+                """
+                "Файл @bi{src.pht} модуля @b{test}."
+            ]]))
+    (instr
+        (long "only-export")
+        (desc """
+            Блок инструкций.
+            Обрабатывается в месте @i{импорта} модуля.
+            """)
+        (usage
+            "(only-export expr0 exprN)"
+            [["expr*"] "инструкции."])
+        (example [
+            [
+                """
+                (use-ctx pht
+                    (test-fn 1 (*module-name*))
+                    (test-fn 2 (test-macro))
+                    (export
+                        (def-macro test-macro [] (*module-name*)))
+                    (only-export
+                        (test-fn 3 (test-macro))
+                        (test-fn 4 (*module-name*))))
+                """
+                "Файл @bi{src.pht} модуля @b{test/helper}."
+            ]
+            [
+                """
+                (use-ctx pht test/helper
+                    (test-fn 0 (*module-name*)))
+                """
+                "Файл @bi{src.pht} модуля @b{test}."
+            ]])))

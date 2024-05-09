@@ -20,8 +20,6 @@ class NodeInstruction(info: INodeInfo) : BaseNode(info) {
             val names: MutableList<String> = ArrayList()
         }
     }
-
-    class Example(val code: String) {
-        var desc: String? = null
-    }
 }
+
+typealias Example = List<Pair<String, String?>>

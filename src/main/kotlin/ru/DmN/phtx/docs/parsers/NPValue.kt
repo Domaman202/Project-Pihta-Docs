@@ -1,6 +1,7 @@
 package ru.DmN.phtx.docs.parsers
 
 import ru.DmN.phtx.docs.ast.NodeValue
+import ru.DmN.phtx.docs.ast.NodeValue.Type
 import ru.DmN.phtx.docs.utils.node.NodeTypes.VALUE
 import ru.DmN.siberia.ast.Node
 import ru.DmN.siberia.lexer.Token
@@ -16,8 +17,8 @@ object NPValue : INodeParser {
         NodeValue(
             INodeInfo.of(VALUE, ctx, token),
             when (token.type) {
-                STRING  -> NodeValue.Type.STRING
-                INTEGER -> NodeValue.Type.NUMBER
+                STRING  -> Type.STRING
+                INTEGER -> Type.NUMBER
                 else    -> throw RuntimeException()
             },
             token.text!!

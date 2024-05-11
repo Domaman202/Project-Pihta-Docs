@@ -28,7 +28,10 @@
                     (test-fn 0 (*module-name*)))
                 """
                 "Файл @bi{src.pht} модуля @b{test}."
-            ]]))
+            ]])
+        (test
+            "test/siberia/cpp/export"
+            "test/siberia/jvm/export"))
     (instr
         (long "only-export")
         (desc """

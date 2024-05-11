@@ -58,6 +58,7 @@ object NRInstruction : INodeProcessor<NodeNodesList> {
                         }
                     }
 
+                    TEST -> this.tests += processor.computeList(it, ctx).map { processor.computeString(it, ctx) }
                     else -> throw RuntimeException()
                 }
             }

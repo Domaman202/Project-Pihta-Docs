@@ -71,6 +71,8 @@ object PihtaDocs : Module("phtx/docs") {
         // s
         add(SHORT,    NRAttribute)
         add(SYMBOL,   NRAttribute)
+        // t
+        add(TEST,     NRAttribute)
         // u
         add(USAGE,    NRAttribute)
         // v

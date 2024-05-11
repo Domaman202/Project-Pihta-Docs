@@ -12,6 +12,7 @@ class NodeInstruction(info: INodeInfo) : BaseNode(info) {
     //
     var usage: MutableList<Usage> = ArrayList()
     var examples: MutableList<Example> = ArrayList()
+    val tests: MutableList<String> = ArrayList()
 
     class Usage(val code: String) {
         val arguments: MutableList<Argument> = ArrayList()

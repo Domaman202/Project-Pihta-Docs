@@ -105,6 +105,14 @@ object NCInstruction : INodeCompiler<NodeInstruction> {
                     }
                 }.toString()
             )
+            str = str.replace(
+                "<--tests>",
+                StringBuilder().apply {
+                    append("\t\t<div class=\"tests\">")
+                    node.tests.forEach { append("\t\t\t").append(formatToHTML(it, "class=\"border-margin\"")).append('\t') }
+                    append("\t\t<div/>")
+                }.toString()
+            )
             File("$it/${ctx.doc_module}/${ctx.category}/instructions").mkdirs()
             File("$it/${ctx.doc_module}/${ctx.category}/instructions/${node.long!!.normalize()}.html").writeText(str)
         }

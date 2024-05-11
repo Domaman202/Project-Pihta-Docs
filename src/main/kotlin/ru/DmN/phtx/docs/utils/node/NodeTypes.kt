@@ -25,6 +25,8 @@ enum class NodeTypes : INodeType {
     // s
     SHORT("short", PARSED),
     SYMBOL("symbol", PARSED),
+    // t
+    TEST("test", PARSED),
     // u
     USAGE("usage", PARSED),
     // v

@@ -15,6 +15,8 @@ object InstrHelper : Module("phtx/docs/instr/helper") {
         // s
         addSNP(SHORT)
         addSNP(SYMBOL)
+        // t
+        addSNP(TEST)
         // u
         addSNP(USAGE)
     }

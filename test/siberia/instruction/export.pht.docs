@@ -1,0 +1,61 @@
+(category "export"
+    (instr
+        (long "export")
+        (desc """
+            Блок инструкций.
+            Обрабатывается в месте @i{определения} @b{и} в месте @i{импорта} модуля.
+            """)
+        (usage
+            "(export expr0 exprN)"
+            [["expr*"] "инструкции."])
+        (example [
+            [
+                """
+                (use-ctx pht
+                    (test-fn 1 (*module-name*))
+                    (test-fn 2 (test-macro))
+                    (export
+                        (def-macro test-macro [] (*module-name*)))
+                    (only-export
+                        (test-fn 3 (test-macro))
+                        (test-fn 4 (*module-name*))))
+                """
+                "Файл @bi{src.pht} модуля @b{test/helper}."
+            ]
+            [
+                """
+                (use-ctx pht test/helper
+                    (test-fn 0 (*module-name*)))
+                """
+                "Файл @bi{src.pht} модуля @b{test}."
+            ]]))
+    (instr
+        (long "only-export")
+        (desc """
+            Блок инструкций.
+            Обрабатывается в месте @i{импорта} модуля.
+            """)
+        (usage
+            "(only-export expr0 exprN)"
+            [["expr*"] "инструкции."])
+        (example [
+            [
+                """
+                (use-ctx pht
+                    (test-fn 1 (*module-name*))
+                    (test-fn 2 (test-macro))
+                    (export
+                        (def-macro test-macro [] (*module-name*)))
+                    (only-export
+                        (test-fn 3 (test-macro))
+                        (test-fn 4 (*module-name*))))
+                """
+                "Файл @bi{src.pht} модуля @b{test/helper}."
+            ]
+            [
+                """
+                (use-ctx pht test/helper
+                    (test-fn 0 (*module-name*)))
+                """
+                "Файл @bi{src.pht} модуля @b{test}."
+            ]])))

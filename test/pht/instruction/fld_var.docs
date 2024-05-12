@@ -245,4 +245,30 @@
                         (set ^App/i 213)
                         (println ^App/i))))
             """
-            "Код работает на всех платформах!")))
+            "Код работает на всех платформах!"))
+    (instr
+        (long  "block-set")
+        (short "bset")
+        (desc  "Устанавливает значение в @b{переменную} именованного блока.")
+        (usage
+            "(block-set name block value)"
+            [["name"]  "имя переменной."]
+            [["block"] "имя блока."]
+            [["value"] "значение."])
+        (usage
+            "(bset name block value)"
+            [["name"]  "имя переменной."]
+            [["block"] "имя блока."]
+            [["value"] "значение."]))
+    (instr
+        (long  "block-get")
+        (short "bget")
+        (desc "Получает значение @b{переменной} именованного блока.")
+        (usage
+            "(block-get name block)"
+            [["name"]  "имя переменной."]
+            [["block"] "имя блока."])
+        (usage
+            "(bget name block)"
+            [["name"]  "имя переменной."]
+            [["block"] "имя блока."])))

@@ -1,0 +1,7 @@
+(category "annotation"
+    (instr
+        (long "@annotation")
+        (desc "Применение @i{java.lang.Annotation} аннотации.")
+        (usage
+            "(class-of type)"
+            [["type"] "тип."])))

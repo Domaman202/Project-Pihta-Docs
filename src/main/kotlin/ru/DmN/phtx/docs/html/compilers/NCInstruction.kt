@@ -15,7 +15,7 @@ import java.io.File
 
 object NCInstruction : INodeCompiler<NodeInstruction> {
     override fun compile(node: NodeInstruction, compiler: Compiler, ctx: CompilationContext) {
-        ctx.instructions += Triple(node.long!!.normalize(), node.short, node.symbol)
+        ctx.instructions += Triple(node.long!!.normalize(), node.short?.normalize(), node.symbol)
         compiler.finalizers.add { it ->
             var str = String(PhtDocsHtml.getModuleFile("instruction.html").readBytes())
             str = str.replace(
@@ -34,7 +34,12 @@ object NCInstruction : INodeCompiler<NodeInstruction> {
                         categories.forEach { (category, instructions) ->
                             if (j++ > 0)
                                 append('\n')
-                            append("\t\t\t<div class=\"table\"><div class=\"caption\">").append(category.replace('_', ' ')).append("</div><br><div class=\"body\">\n")
+                            append("\t\t\t<div class=\"table\"><div class=\"caption\">").append(
+                                category.replace(
+                                    '_',
+                                    ' '
+                                )
+                            ).append("</div><br><div class=\"body\">\n")
                             val left = StringBuilder().append("\t\t\t\t<div class=\"left\">\n")
                             val right = StringBuilder().append("\t\t\t\t<div class=\"right\">\n")
                             instructions.forEach {
@@ -61,9 +66,15 @@ object NCInstruction : INodeCompiler<NodeInstruction> {
                 "<--names>",
                 StringBuilder().apply {
                     append("\t\t\t")
-                    node.long?.let { append("<div class=\"name-parent\"><p class=\"border-margin\">").append(it).append("</p></div>") }
-                    node.short?.let { append("<div class=\"name-parent\"><p class=\"border-margin\">").append(it).append("</p></div>") }
-                    node.symbol?.let { append("<div class=\"name-parent\"><p class=\"border-margin\">").append(it).append("</p></div>") }
+                    node.long?.let {
+                        append("<div class=\"name-parent\"><p class=\"border-margin\">").append(it).append("</p></div>")
+                    }
+                    node.short?.let {
+                        append("<div class=\"name-parent\"><p class=\"border-margin\">").append(it).append("</p></div>")
+                    }
+                    node.symbol?.let {
+                        append("<div class=\"name-parent\"><p class=\"border-margin\">").append(it).append("</p></div>")
+                    }
                 }.toString()
             )
             str = str.replace(
@@ -76,13 +87,20 @@ object NCInstruction : INodeCompiler<NodeInstruction> {
                     node.usage.forEachIndexed { i, it1 ->
                         if (i > 0)
                             append('\n')
-                        append("\t\t<div class=\"usage\"><div class=\"code\"><code>").append(it1.code).append("</code></div>\n")
+                        append("\t\t<div class=\"usage\"><div class=\"code\"><code>").append(it1.code)
+                            .append("</code></div>\n")
                         it1.arguments.forEach { it2 ->
                             append("\t\t\t<div class=\"usage-arg\">\n")
                             it2.names.forEach {
-                                append("\t\t\t\t<div class=\"usage-arg-name\"><p class=\"border-margin\">").append(it).append("</p></div>\n")
+                                append("\t\t\t\t<div class=\"usage-arg-name\"><p class=\"border-margin\">").append(it)
+                                    .append("</p></div>\n")
                             }
-                            append("\t\t\t\t<div class=\"usage-arg-desc\">").append(formatToHTML("- " + it2.desc, "class=\"border-margin\"")).append("</div>\n\t\t\t</div>\n")
+                            append("\t\t\t\t<div class=\"usage-arg-desc\">").append(
+                                formatToHTML(
+                                    "- " + it2.desc,
+                                    "class=\"border-margin\""
+                                )
+                            ).append("</div>\n\t\t\t</div>\n")
                         }
                         append("\t\t</div>")
                     }
@@ -107,9 +125,13 @@ object NCInstruction : INodeCompiler<NodeInstruction> {
             )
             str = str.replace(
                 "<--tests>",
-                StringBuilder().apply {
+                if (node.tests.isEmpty())
+                    ""
+                else StringBuilder().apply {
                     append("\t\t<div class=\"tests\">")
-                    node.tests.forEach { append("\t\t\t").append(formatToHTML(it, "class=\"border-margin\"")).append('\t') }
+                    node.tests.forEach {
+                        append("\t\t\t").append(formatToHTML(it, "class=\"border-margin\"")).append('\t')
+                    }
                     append("\t\t<div/>")
                 }.toString()
             )

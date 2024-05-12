@@ -1,9 +1,8 @@
 (category "other"
     (instr
-        (long   "debug")
-        (short  "dbg")
-        (symbol "_")
-        (desc "Отладочная инструкция, игнорирует аргументы.")
+        (long  "debug")
+        (short "dbg")
+        (desc  "Отладочная инструкция, игнорирует аргументы.")
         (usage
             "(debug arg0 argN)"
             [["arg*"] "аргументы."])

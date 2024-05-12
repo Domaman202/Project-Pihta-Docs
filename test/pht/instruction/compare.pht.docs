@@ -1,0 +1,103 @@
+(category "compare"
+    (instr
+        (long   "eq")
+        (symbol "=")
+        (desc   "Проверка равенства @i{двух} значение.")
+        (usage
+            "(eq argA argB)"
+            [["arg*"] "значения."])
+        (usage
+            "(= argA argB)"
+            [["arg*"] "значения."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (= 213 213))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long   "not-eq")
+        (symbol "!=")
+        (desc   "Проверка неравенства @i{двух} значение.")
+        (usage
+            "(not-eq argA argB)"
+            [["arg*"] "значения."])
+        (usage
+            "(!= argA argB)"
+            [["arg*"] "значения."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (!= 4 5))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long   "great")
+        (symbol ">")
+        (desc   "Проверка превосходства @i{двух} значение.")
+        (usage
+            "(great argA argB)"
+            [["arg*"] "значения."])
+        (usage
+            "(> argA argB)"
+            [["arg*"] "значения."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (> 5 4))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long   "gt-or-eq")
+        (symbol ">=")
+        (desc   "Проверка превосходства или равенства @i{двух} значение.")
+        (usage
+            "(gt-or-eq argA argB)"
+            [["arg*"] "значения."])
+        (usage
+            "(>= argA argB)"
+            [["arg*"] "значения."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (>= 6 6))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long   "less")
+        (symbol "<")
+        (desc   "Проверка снисхождения @i{двух} значение.")
+        (usage
+            "(less argA argB)"
+            [["arg*"] "значения."])
+        (usage
+            "(< argA argB)"
+            [["arg*"] "значения."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (< 1 2))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long   "ls-or-eq")
+        (symbol "<=")
+        (desc   "Проверка снисхождения или равенства @i{двух} значение.")
+        (usage
+            "(ls-or-eq argA argB)"
+            [["arg*"] "значения."])
+        (usage
+            "(<= argA argB)"
+            [["arg*"] "значения."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (println (<= 3 3))))
+            """
+            "Код работает на всех платформах!")))

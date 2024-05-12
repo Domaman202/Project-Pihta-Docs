@@ -88,51 +88,13 @@
         (long "neg")
         (desc "Инверсия @i{одного} значения.")
         (usage
-            "(neg arg)"
-            [["arg"] "значение."])
+            "(neg value)"
+            [["value"] "значение."])
         (example
             """
             (use-ctx pht
                 (app-fn
                     (println (neg 202))))
-            """
-            "Код работает на всех платформах!"))
-    (instr
-        (long   "shift-left")
-        (symbol "<<")
-        (desc   "Битовые сдвиг @i{одного} значения влево.")
-        (usage
-            "(shift-left value offset)"
-            [["value"]  "значение."]
-            [["offset"] "сдвиг."])
-        (usage
-            "(<< value offset)"
-            [["value"]  "значение."]
-            [["offset"] "сдвиг."])
-        (example
-            """
-            (use-ctx pht
-                (app-fn
-                    (println (<< 1 10))))
-            """
-            "Код работает на всех платформах!"))
-    (instr
-        (long   "shift-right")
-        (symbol ">>")
-        (desc "Битовые сдвиг @i{одного} значения вправо.")
-        (usage
-            "(shift-right value offset)"
-            [["value"]  "значение."]
-            [["offset"] "сдвиг."])
-        (usage
-            "(>> value offset)"
-            [["value"]  "значение."]
-            [["offset"] "сдвиг."])
-        (example
-            """
-            (use-ctx pht
-                (app-fn
-                    (println (>> 1024 10))))
             """
             "Код работает на всех платформах!"))
     (instr

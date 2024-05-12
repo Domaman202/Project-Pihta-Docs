@@ -3,19 +3,6 @@
         (long "def")
         (desc "Определение переменной или поля.")
         (usage
-            "(define [[type name value] [type name value]])"
-            [["type"]  "тип."]
-            [["name"]  "имя."]
-            [["value"] "значение."])
-        (usage
-            "(define [[name value] [name value]])"
-            [["name"]  "имя."]
-            [["value"] "значение."])
-        (usage
-            "(define [[name type] [name type]])"
-            [["name"] "имя."]
-            [["type"] "тип."])
-        (usage
             "(def [[type name value] [type name value]])"
             [["type"]  "тип."]
             [["name"]  "имя."]
@@ -57,6 +44,13 @@
                     (println i)))
             """
             "Код работает на всех платформах!"))
+    (instr
+        (long "def-set")
+        (desc "Определяет переменную или присваивает ей значение.")
+        (usage
+            "(def-set name value)"
+            [["name"]  "имя."]
+            [["value"] "значение."]))
     (instr
         (long "fld")
         (desc "Определение поля, включая геттер и сеттер.")

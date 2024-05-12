@@ -1,0 +1,34 @@
+(category "cycle"
+    (instr
+        (long "cycle")
+        (desc "Цикл с условием.")
+        (usage
+            "(cycle cond expr0 exprN)"
+            [["cond"]  "условие."]
+            [["expr*"] "тело."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (def [[i 0]])
+                    (cycle (< i 10)
+                        (println i)
+                        (++ i))))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long "for")
+        (desc "Цикл перебора элементов (@i{Array} | @i{Iterable} | @i{Iterator}).")
+        (usage
+            "(for [e iter] expr0 exprN)"
+            [["e"]     "элемент."]
+            [["iter"]  "коллекция."]
+            [["expr*"] "тело."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (for [i (array-of 12 21 33)]
+                        (println i))))
+            """
+            "Код работает на всех платформах!")))

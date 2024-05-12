@@ -3,5 +3,8 @@
         (long "@annotation")
         (desc "Применение @i{java.lang.Annotation} аннотации.")
         (usage
-            "(class-of type)"
-            [["type"] "тип."])))
+            "(@annotation type [[name value] [name value]] expr0 exprN)"
+            [["type"]  "тип аннотации."]
+            [["name"]  "имя аргумента."]
+            [["value"] "значение аргумента."]
+            [["expr*"] "выражения."])))

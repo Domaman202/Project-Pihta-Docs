@@ -1,0 +1,16 @@
+(category "block"
+    (instr
+        (long  "sync-block")
+        (short "sblock")
+        (desc  """
+            Безымянный блок синхронизации.
+            Создаёт под-контекст и выполняет выражения.
+            """)
+        (usage
+            "(sync-block lock expr0 exprN)"
+            [["lock"]  "синхронизирующий объект."]
+            [["expr*"] "выражения."])
+        (usage
+            "(sblock lock expr0 exprN)"
+            [["lock"]  "синхронизирующий объект."]
+            [["expr*"] "выражения."])))

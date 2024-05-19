@@ -1,10 +1,27 @@
 (category "annotation"
     (instr
-        (long "@annotation")
-        (desc "Применение @i{java.lang.Annotation} аннотации.")
+        (long  "@annotation")
+        (short "@ann")
+        (desc  "Применение @i{java.lang.Annotation} аннотации.")
         (usage
             "(@annotation type [[name value] [name value]] expr0 exprN)"
             [["type"]  "тип аннотации."]
             [["name"]  "имя аргумента."]
             [["value"] "значение аргумента."]
+            [["expr*"] "выражения."]))
+    (instr
+        (long "@list")
+        (desc "Список аргументов для аннотации.")
+        (usage
+            "(@list [arg0 argN])"
+            [["arg*"] "значения."]))
+    (instr
+        (long "@sync")
+        (desc """
+            Аннотация @b{sync}.
+            Применяется к выражениям типа:
+            1. @b{метод}
+            """)
+        (usage
+            "(@sync expr0 exprN)"
             [["expr*"] "выражения."])))

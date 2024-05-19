@@ -1,4 +1,4 @@
-(category "native"
+(category "annotation"
     (instr
         (long "@native")
         (desc """

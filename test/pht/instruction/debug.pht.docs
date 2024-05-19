@@ -1,0 +1,22 @@
+(category "debug"
+    (instr
+        (long "debug")
+        (desc "Отладочная инструкция, игнорирует аргументы.")
+        (usage
+            "(debug arg0 argN)"
+            [["arg*"] "аргументы."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (debug)))
+            """
+            "Код работает на всех платформах!"))
+    (instr
+        (long  "test-func")
+        (short "test-fn")
+        (desc  "Определение тестового класса и метода.")
+        (usage
+            "(test-func id expr0 exprN)"
+            [["id"]    "номер теста."]
+            [["expr*"] "тело."])))

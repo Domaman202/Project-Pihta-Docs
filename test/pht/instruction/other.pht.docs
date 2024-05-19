@@ -1,19 +1,5 @@
 (category "other"
     (instr
-        (long  "debug")
-        (short "dbg")
-        (desc  "Отладочная инструкция, игнорирует аргументы.")
-        (usage
-            "(debug arg0 argN)"
-            [["arg*"] "аргументы."])
-        (example
-            """
-            (use-ctx pht
-                (app-fn
-                    (debug)))
-            """
-            "Код работает на всех платформах!"))
-    (instr
         (long "comment")
         (desc "Комментарий, игнорируется на уровне парсинга.")
         (usage

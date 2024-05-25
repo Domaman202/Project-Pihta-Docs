@@ -22,7 +22,8 @@
                 (app-fn
                     (println (and true true))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/logic-bits"))
     (instr
         (long   "or")
         (symbol "|")
@@ -46,7 +47,8 @@
                 (app-fn
                     (println (or false true))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/logic-bits"))
     (instr
         (long "xor")
         (desc "[@i{Логическая} | @i{Битовая}] операция @b{ИСКЛ ИЛИ} для @i{двух} значений.")
@@ -66,7 +68,8 @@
                 (app-fn
                     (println (xor false false))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/logic-bits"))
     (instr
         (long   "not")
         (symbol "!")
@@ -83,7 +86,8 @@
                 (app-fn
                     (println (! false))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/logic-bits"))
     (instr
         (long   "shift-left")
         (symbol "<<")
@@ -102,7 +106,8 @@
                 (app-fn
                     (println (<< 1 10))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/logic-bits"))
     (instr
         (long   "shift-right")
         (symbol ">>")
@@ -121,4 +126,5 @@
                 (app-fn
                     (println (>> 1024 10))))
             """
-            "Код работает на всех платформах!")))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/logic-bits")))

@@ -336,4 +336,9 @@
                 (app-fn
                     (println "Слава Советскому Союзу!")))
             """
-            "Код работает на всех платформах!")))
+            "Код работает на всех платформах!")
+        (test
+            "test/pht/cpp/app-fn"
+            "test/pht/cpp/app"
+            "test/pht/jvm/app-fn"
+            "test/pht/jvm/app")))

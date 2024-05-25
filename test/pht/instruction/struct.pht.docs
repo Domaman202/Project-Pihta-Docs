@@ -116,4 +116,7 @@
                 (app (defn main ^void []
                     (println "Апчхи!"))))
             """
-            "Код работает на всех платформах!")))
+            "Код работает на всех платформах!")
+        (test
+            "test/pht/cpp/app"
+            "test/pht/jvm/app")))

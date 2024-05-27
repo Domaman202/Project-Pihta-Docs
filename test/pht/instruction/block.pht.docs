@@ -19,7 +19,8 @@
                         (def [[i 21]])
                         (println i))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/body"))
     (instr
         (long  "named-block")
         (short "nblock")
@@ -60,7 +61,8 @@
                                 (continue CycleBlock))
                             (println i)))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/named-block"))
     (instr
         (long "break")
         (desc "Переходит к началу именованного блока.")
@@ -79,7 +81,8 @@
                             (println i)
                             (++ i)))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/named-block"))
     (instr
         (long "continue")
         (desc "Переходит к концу именованного блока.")
@@ -98,7 +101,8 @@
                                 (continue CycleBlock))
                             (println i)))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/named-block"))
     (instr
         (long "catch")
         (desc """
@@ -123,4 +127,5 @@
                             [_ ^Exception           (println "Exception!")]]
                         (throw (new ^Exception)))))
             """
-            "Код работает на всех платформах!")))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/catch")))

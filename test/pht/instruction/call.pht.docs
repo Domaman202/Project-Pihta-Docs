@@ -17,7 +17,10 @@
                 (app-fn
                     (println (new ^Test))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test
+            "test/pht/jvm/ctor-a"
+            "test/pht/jvm/ctor-b"))
     (instr
         (long  "method-call")
         (short "mcall")
@@ -118,4 +121,5 @@
                     (app-fn
                         (println (#fac . 4)))))
             """
-            "Код работает на всех платформах!")))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/trcall")))

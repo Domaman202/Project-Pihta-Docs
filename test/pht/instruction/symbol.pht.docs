@@ -11,7 +11,8 @@
                 (app-fn
                     (println (symbol "Привет, " "Русь!"))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/symbol"))
     (instr
         (long "lazy-symbol")
         (desc "Собирает @b{символ} из @i{нескольких} значений во время компиляции.")
@@ -33,7 +34,8 @@
                     (println "\nЛенивый:\n")
                     (test-lazy)))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/lazy-symbol"))
     (instr
         (long  "rand-symbol")
         (desc  "Генерирует случайное неотрицательное число в виде @b{символа} во время компиляции.")
@@ -44,10 +46,12 @@
                 (app-fn
                     (println (rand-symbol))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/rand-symbol"))
     (instr
         (long "symbol-int")
         (desc "Преобразует @b{символ} в целое число.")
         (usage
             "(symbol-int symbol)"
-            [["symbol"] "символ."])))
+            [["symbol"] "символ."])
+        (test "test/pht/jvm/symbol-int")))

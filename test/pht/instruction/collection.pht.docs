@@ -12,7 +12,8 @@
                 (app-fn
                     (println (arr-of-type ^Object 12 21 33))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/arr-b"))
     (instr
         (long "arr-of")
         (desc "Создаёт массив из элементов.")
@@ -25,7 +26,8 @@
                 (app-fn
                     (println (arr-of 12 21 33))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/arr-b"))
     (instr
         (long "arr-size")
         (desc "Возвращает размер массива.")
@@ -62,7 +64,8 @@
                     (aset arr 3 21)
                     (println (#contentToString arr))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/arr-a"))
     (instr
         (long  "arr-get")
         (short "aget")
@@ -81,7 +84,8 @@
                 (app-fn
                     (println (aget (arr-of 12 21 33) 1))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/arr-a"))
     (instr
         (long "new-arr")
         (desc "Создаёт массив заданного типа и размера.")
@@ -95,7 +99,8 @@
                 (app-fn
                     (println (#contentToString (new-arr ^int 4)))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/arr-a"))
     (instr
         (long "range")
         (desc """

@@ -1,5 +1,12 @@
 (category "collection"
     (instr
+        (long "list-of")
+        (desc "Создаёт список из элементов.")
+        (usage
+            "(list-of arg0 argN)"
+            [["arg*"] "элементы."])
+        (test "test/pht/jvm/list-of"))
+    (instr
         (long "arr-of-type")
         (desc "Создаёт массив из элементов с определённым типом.")
         (usage
@@ -40,7 +47,8 @@
                 (app-fn
                     (println (arr-size (arr-of 202 203 213 666 777 999)))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/arr-b"))
     (instr
         (long  "arr-set")
         (short "aset")
@@ -110,4 +118,5 @@
         (usage
             "(range start stop)"
             [["start"] "начальное значение."]
-            [["stop"]  "конечное значение."]))
+            [["stop"]  "конечное значение."])
+        (test "test/pht/jvm/for-range"))

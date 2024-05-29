@@ -9,7 +9,30 @@
             """)
         (usage
             "(@@skip arg0 argN)"
-            [["arg*"] "аргументы."]))
+            [["arg*"] "аргументы."])
+        (test "test/pht/jvm/skip"))
+    (instr
+        (long  "@@roll-left")
+        (short "<-")
+        (desc  "Свёртка выражений справа налево.")
+        (usage
+            "(@@roll-left expr0 exprN)"
+            [["expr*"] "тело."])
+        (usage
+            "(<- expr0 exprN)"
+            [["expr*"] "тело."])
+        (test "test/pht/jvm/roll"))
+    (instr
+        (long  "@@roll-right")
+        (short "->")
+        (desc  "Свёртка выражений слева направо.")
+        (usage
+            "(@@roll-right expr0 exprN)"
+            [["expr*"] "тело."])
+        (usage
+            "(-> expr0 exprN)"
+            [["expr*"] "тело."])
+        (test "test/pht/jvm/roll"))
     (instr
         (long "@@if-platform")
         (desc """
@@ -19,4 +42,5 @@
         (usage
             "(@@if-platform platform expr0 exprN)"
             [["platform"] "платформа."]
-            [["expr*"]    "тело."])))
+            [["expr*"]    "тело."])
+        (test "test/pht/jvm/if-platform")))

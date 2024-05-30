@@ -43,14 +43,17 @@
                     (set i 33)
                     (println i)))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/def-var")
+        (test "test/pht/jvm/def-field"))
     (instr
         (long "def-set")
         (desc "Определяет переменную или присваивает ей значение.")
         (usage
             "(def-set name value)"
             [["name"]  "имя."]
-            [["value"] "значение."]))
+            [["value"] "значение."])
+        (test "test/pht/jvm/def-var"))
     (instr
         (long "fld")
         (desc "Определение поля, включая геттер и сеттер.")
@@ -69,7 +72,8 @@
                     (set o/i 12)
                     (println o/i)))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/fld-field"))
     (instr
         (long  "enum-fld")
         (short "efld")
@@ -127,7 +131,8 @@
                         (set j 21)
                         (println j))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/def-var"))
     (instr
         (long "get")
         (desc "Получает значение @b{переменной} или @b{поля}.")
@@ -155,7 +160,8 @@
                         (set j 21)
                         (println j))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/def-var"))
     (instr
         (long  "fld-set")
         (short "fset")
@@ -199,7 +205,9 @@
                         (set ^App/i 203)
                         (println ^App/i))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/def-field")
+        (test "test/pht/jvm/fld-field"))
     (instr
         (long  "fld-get")
         (short "fget")
@@ -239,7 +247,9 @@
                         (set ^App/i 213)
                         (println ^App/i))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/def-field")
+        (test "test/pht/jvm/fld-field"))
     (instr
         (long  "block-set")
         (short "bset")

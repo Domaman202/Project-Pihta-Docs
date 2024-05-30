@@ -81,60 +81,70 @@ object NCInstruction : INodeCompiler<NodeInstruction> {
                 "<--description>",
                 formatToHTML(node.desc!!, "class=\"border-margin\"")
             )
-            str = str.replace(
-                "<--usages>",
-                StringBuilder().apply {
-                    node.usage.forEachIndexed { i, it1 ->
-                        if (i > 0)
-                            append('\n')
-                        append("\t\t<div class=\"usage\"><div class=\"code\"><code>").append(it1.code)
-                            .append("</code></div>\n")
-                        it1.arguments.forEach { it2 ->
-                            append("\t\t\t<div class=\"usage-arg\">\n")
-                            it2.names.forEach {
-                                append("\t\t\t\t<div class=\"usage-arg-name\"><p class=\"border-margin\">").append(it)
-                                    .append("</p></div>\n")
+            str = if (node.usage.isEmpty())
+                str.replace("<h2>Применение</h2>", "").replace("<--usages>", "")
+            else {
+                str.replace(
+                    "<--usages>",
+                    StringBuilder().apply {
+                        node.usage.forEachIndexed { i, it1 ->
+                            if (i > 0)
+                                append('\n')
+                            append("\t\t<div class=\"usage\"><div class=\"code\"><code>").append(it1.code)
+                                .append("</code></div>\n")
+                            it1.arguments.forEach { it2 ->
+                                append("\t\t\t<div class=\"usage-arg\">\n")
+                                it2.names.forEach {
+                                    append("\t\t\t\t<div class=\"usage-arg-name\"><p class=\"border-margin\">").append(it)
+                                        .append("</p></div>\n")
+                                }
+                                append("\t\t\t\t<div class=\"usage-arg-desc\">").append(
+                                    formatToHTML(
+                                        "- " + it2.desc,
+                                        "class=\"border-margin\""
+                                    )
+                                ).append("</div>\n\t\t\t</div>\n")
                             }
-                            append("\t\t\t\t<div class=\"usage-arg-desc\">").append(
-                                formatToHTML(
-                                    "- " + it2.desc,
-                                    "class=\"border-margin\""
-                                )
-                            ).append("</div>\n\t\t\t</div>\n")
+                            append("\t\t</div>")
                         }
-                        append("\t\t</div>")
-                    }
-                }.toString()
-            )
-            str = str.replace(
-                "<--examples>",
-                StringBuilder().apply {
-                    node.examples.forEachIndexed { i, list ->
-                        if (i > 0)
-                            append('\n')
-                        append("\t\t<div class=\"example\">\n")
-                        list.forEach { pair ->
-                            append("\t\t\t<pre class=\"code\">\n").append(pair.first).append("\t\t\t</pre>\n")
-                            pair.second?.let {
-                                append("\t\t\t").append(formatToHTML(it, "class=\"border-margin\"")).append('\n')
+                    }.toString()
+                )
+            }
+            str = if (node.examples.isEmpty())
+                str.replace("<h2>Примеры</h2>", "").replace("<--examples>", "")
+            else {
+                str.replace(
+                    "<--examples>",
+                    StringBuilder().apply {
+                        node.examples.forEachIndexed { i, list ->
+                            if (i > 0)
+                                append('\n')
+                            append("\t\t<div class=\"example\">\n")
+                            list.forEach { pair ->
+                                append("\t\t\t<pre class=\"code\">\n").append(pair.first).append("\t\t\t</pre>\n")
+                                pair.second?.let {
+                                    append("\t\t\t").append(formatToHTML(it, "class=\"border-margin\"")).append('\n')
+                                }
                             }
+                            append("\t\t</div>")
                         }
-                        append("\t\t</div>")
-                    }
-                }.toString()
-            )
-            str = str.replace(
-                "<--tests>",
-                if (node.tests.isEmpty())
-                    ""
-                else StringBuilder().apply {
-                    append("\t\t<div class=\"tests\">")
-                    node.tests.forEach {
-                        append("\t\t\t").append(formatToHTML(it, "class=\"border-margin\"")).append('\t')
-                    }
-                    append("\t\t<div/>")
-                }.toString()
-            )
+                    }.toString()
+                )
+            }
+            str = if (node.tests.isEmpty())
+                str.replace("<h2>Тесты</h2>", "").replace("<--tests>", "")
+            else {
+                str.replace(
+                    "<--tests>",
+                    StringBuilder().apply {
+                        append("\t\t<div class=\"tests\">")
+                        node.tests.forEach {
+                            append("\t\t\t").append(formatToHTML(it, "class=\"border-margin\"")).append('\t')
+                        }
+                        append("\t\t<div/>")
+                    }.toString()
+                )
+            }
             File("$it/${ctx.doc_module}/${ctx.category}/instructions").mkdirs()
             File("$it/${ctx.doc_module}/${ctx.category}/instructions/${node.long!!.normalize()}.html").writeText(str)
         }

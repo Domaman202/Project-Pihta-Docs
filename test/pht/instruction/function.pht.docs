@@ -24,7 +24,10 @@
                 (app-fn
                     (println (new ^Test 12 21.33))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test
+            "test/pht/jvm/ctor-a"
+            "test/pht/jvm/ctor-b"))
     (instr
         (long  "def-enum-ctor")
         (short "ector")
@@ -86,7 +89,8 @@
                     (app-fn
                         (#foo ^App))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/defn"))
     (instr
         (long  "def-ext-func")
         (short "efn")
@@ -116,7 +120,8 @@
                     (app-fn
                         (#log "Славься Русь!"))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/ext-fn"))
     (instr
         (long  "lambda")
         (short "fn")

@@ -201,7 +201,10 @@
                         (set j 21)
                         (#test ^App (fn [i j][] (println (+ i j)))))))
             """
-            "Код работает на @b{jvm} платформе!"))
+            "Код работает на @b{jvm} платформе!")
+        (test
+            "test/pht/jvm/lambda-a"
+            "test/pht/jvm/lambda-b"))
     (instr
         (long  "ref-func")
         (short "rfn")

@@ -319,7 +319,12 @@
                     (app-fn
                         (#run-runnable . (rfn . . foo)))))
             """
-            "Код работает на @b{} платформе!"))
+            "Код работает на @b{} платформе!")
+        (test
+            "test/pht/jvm/ref-func-a"
+            "test/pht/jvm/ref-func-b"
+            "test/pht/jvm/ref-func-c"
+            "test/pht/jvm/ref-func-d"))
     (instr
         (long  "app-func")
         (short "app-fn")

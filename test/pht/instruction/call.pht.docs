@@ -97,7 +97,12 @@
                 (app-fn
                     (#foo (new ^Test))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test
+            "test/pht/jvm/mcall-a"
+            "test/pht/jvm/mcall-b"
+            "test/pht/jvm/mcall-c"
+            "test/pht/jvm/mcall-d"))
     (instr
         (long  "tailrec-call")
         (short "trcall")

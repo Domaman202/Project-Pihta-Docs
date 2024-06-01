@@ -1,6 +1,21 @@
 (category "block"
     (instr
-        (long "body")
+        (long  "namespace")
+        (short "ns")
+        (desc  """
+            Безымянный блок пространства имён.
+            Создаёт под-контекст и обрабатывает в нём выражения.
+            """)
+        (usage
+            "(namespace name expr0 exprN)"
+            [["name"]  "имя."]
+            [["expr*"] "выражения."])
+        (usage
+            "(ns name expr0 exprN)"
+            [["name"]  "имя."]
+            [["expr*"] "выражения."]))
+    (instr
+        (long "block")
         (desc """
             Безымянный блок.
             Создаёт под-контекст и выполняет в нём выражения.
@@ -23,8 +38,8 @@
         (test "test/pht/jvm/body"))
     (instr
         (long  "named-block")
-        (short "nblock")
-        (desc """
+        (short "nb")
+        (desc  """
             Именованный блок.
             Создаёт под-контекст и выполняет в нём выражения.
             """)

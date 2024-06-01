@@ -263,7 +263,8 @@
             "(bset name block value)"
             [["name"]  "имя переменной."]
             [["block"] "имя блока."]
-            [["value"] "значение."]))
+            [["value"] "значение."])
+        (test "test/pht/jvm/named-block"))
     (instr
         (long  "block-get")
         (short "bget")
@@ -275,4 +276,5 @@
         (usage
             "(bget name block)"
             [["name"]  "имя переменной."]
-            [["block"] "имя блока."])))
+            [["block"] "имя блока."])
+        (test "test/pht/jvm/named-block")))

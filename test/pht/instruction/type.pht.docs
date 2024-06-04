@@ -57,28 +57,37 @@
                 (app-fn
                     (println (arr-size (arr-of 202 203 213 666 777 999)))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/arr-comp-type"))
     (instr
         (long "comp-type")
         (desc "Получает @i{тип элемента} из @i{типа массива}.")
         (usage
             "(comp-type type)"
-            [["type"] "тип массива."]))
+            [["type"] "тип массива."])
+        (test "test/pht/jvm/arr-comp-type"))
     (instr
         (long "null-type")
         (desc "Создаёт мета-тип который может быть null.")
         (usage
             "(null-type type)"
-            [["type"] "исходный тип."]))
+            [["type"] "исходный тип."])
+        (test
+            "test/pht/jvm/nullable-a"
+            "test/pht/jvm/nullable-b"))
     (instr
         (long "not-null-type")
         (desc "Создаёт мета-тип который не может быть null.")
         (usage
             "(not-null-type type)"
-            [["type"] "исходный тип."]))
+            [["type"] "исходный тип."])
+        (test
+            "test/pht/jvm/nullable-a"
+            "test/pht/jvm/nullable-b"))
     (instr
         (long "clr-null-type")
         (desc "Очистка принадлежности типа к null-safety.")
         (usage
             "(clr-null-type type)"
-            [["type"] "исходный тип."])))
+            [["type"] "исходный тип."])
+        (test "test/pht/jvm/nullable-b")))

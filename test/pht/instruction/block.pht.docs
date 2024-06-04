@@ -13,7 +13,8 @@
         (usage
             "(ns name expr0 exprN)"
             [["name"]  "имя."]
-            [["expr*"] "выражения."]))
+            [["expr*"] "выражения."])
+        (test "test/pht/jvm/namespace"))
     (instr
         (long "block")
         (desc """

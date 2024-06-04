@@ -44,8 +44,9 @@
                     (println i)))
             """
             "Код работает на всех платформах!")
-        (test "test/pht/jvm/def-var")
-        (test "test/pht/jvm/def-field"))
+        (test
+            "test/pht/jvm/def-var"
+            "test/pht/jvm/def-field"))
     (instr
         (long "def-set")
         (desc "Определяет переменную или присваивает ей значение.")
@@ -206,8 +207,9 @@
                         (println ^App/i))))
             """
             "Код работает на всех платформах!")
-        (test "test/pht/jvm/def-field")
-        (test "test/pht/jvm/fld-field"))
+        (test
+            "test/pht/jvm/def-field"
+            "test/pht/jvm/fld-field"))
     (instr
         (long  "fld-get")
         (short "fget")
@@ -248,8 +250,9 @@
                         (println ^App/i))))
             """
             "Код работает на всех платформах!")
-        (test "test/pht/jvm/def-field")
-        (test "test/pht/jvm/fld-field"))
+        (test
+            "test/pht/jvm/def-field"
+            "test/pht/jvm/fld-field"))
     (instr
         (long  "block-set")
         (short "bset")

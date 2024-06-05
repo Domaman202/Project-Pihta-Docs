@@ -13,8 +13,8 @@
                 (app-fn
                     (def [[list (as-gens ^java.util.List (new ^java.util.ArrayList) ^String)]])
                     (#add list "Hi!")
-                    (println (typeof list))
-                    (println (typeof (#get list 0)))))
+                    (println (type-of list))
+                    (println (type-of (#get list 0)))))
             """
             "Код работает на всех платформах!"))
     (instr
@@ -30,7 +30,7 @@
                 (app-fn
                     (def [[list (with-gens (new ^java.util.ArrayList) ^String)]])
                     (#add list "Hi!")
-                    (println (typeof (#get list 0)))))
+                    (println (type-of (#get list 0)))))
             """
             "Код работает на всех платформах!"))
     (instr
@@ -58,9 +58,12 @@
                     (ctor [] (ccall))
                     (defn foo T^ [] nil))
                 (app-fn
-                    (println (typeof (#foo (new ^TestA<^String>))))))
+                    (println (type-of (#foo (new ^TestA<^String>))))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test
+            "test/pht/jvm/gen-class-a"
+            "test/pht/jvm/gen-class-b"))
     (instr
         (long  "def-func")
         (short "defn")
@@ -87,9 +90,10 @@
                 (app
                     (defn [[T ^Object]] foo T^ [] nil)
                     (app-fn
-                        (println (typeof (#foo<^String> ^App))))))
+                        (println (type-of (#foo<^String> ^App))))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/gen-defn-a"))
     (instr
         (long  "def-ext-func")
         (short "efn")
@@ -120,6 +124,6 @@
                 (app
                     (efn [[T ^Object]] ^String test T^ [] nil)
                     (app-fn
-                        (println (typeof (#test<^String> "Слава России!"))))))
+                        (println (type-of (#test<^String> "Слава России!"))))))
             """
             "Код работает на всех платформах!")))

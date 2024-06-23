@@ -29,17 +29,15 @@
                 """
                 "Файл @bi{src.pht} модуля @b{test}."
             ]])
-        (test
-            "test/siberia/cpp/export"
-            "test/siberia/jvm/export"))
+        (test "test/siberia/jvm/export"))
     (instr
-        (long "only-export")
+        (long "export-only")
         (desc """
             Блок инструкций.
             Обрабатывается в месте @i{импорта} модуля.
             """)
         (usage
-            "(only-export expr0 exprN)"
+            "(export-only expr0 exprN)"
             [["expr*"] "инструкции."])
         (example [
             [
@@ -49,7 +47,7 @@
                     (test-fn 2 (test-macro))
                     (export
                         (def-macro test-macro [] (*module-name*)))
-                    (only-export
+                    (export-only
                         (test-fn 3 (test-macro))
                         (test-fn 4 (*module-name*))))
                 """

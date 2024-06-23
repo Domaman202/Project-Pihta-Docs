@@ -30,6 +30,4 @@
                     (println "Внимание! Обнаружен безопасный код!")))
             """
             "Код работает на всех платформах!")
-        (test
-            "test/siberia/cpp/use-ctx"
-            "test/siberia/jvm/use-ctx")))
+        (test "test/siberia/jvm/use-ctx")))

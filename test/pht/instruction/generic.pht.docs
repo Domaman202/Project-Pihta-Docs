@@ -1,5 +1,22 @@
 (category "generic"
     (instr
+        (long "with-gens")
+        (desc "Выполняет подставку generic-ов к типу.")
+        (usage
+            "(with-gens expr [type0 typeN])"
+            [["expr"]  "выражение."]
+            [["type*"] "generic-и."])
+        (example
+            """
+            (use-ctx pht
+                (app-fn
+                    (def [[list (with-gens (new ^java.util.ArrayList) [^String])]])
+                    (#add list "Hi!")
+                    (println (type-of (#get list 0)))))
+            """
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/with-gens"))
+    (instr
         (long "as-gens")
         (desc "Приводит значение к типу и выполняет подставку generic-ов к итоговому типу.")
         (usage
@@ -17,23 +34,6 @@
                     (println (type-of (#get list 0)))))
             """
             "Код работает на всех платформах!"))
-    (instr
-        (long "with-gens")
-        (desc "Выполняет подставку generic-ов к типу.")
-        (usage
-            "(with-gens expr [type0 typeN])"
-            [["expr"]  "выражение."]
-            [["type*"] "generic-и."])
-        (example
-            """
-            (use-ctx pht
-                (app-fn
-                    (def [[list (with-gens (new ^java.util.ArrayList) [^String])]])
-                    (#add list "Hi!")
-                    (println (type-of (#get list 0)))))
-            """
-            "Код работает на всех платформах!")
-        (test "test/pht/jvm/with-gens"))
     (instr
         (long  "class")
         (short "cls")

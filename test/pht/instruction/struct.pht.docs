@@ -117,6 +117,4 @@
                     (println "Апчхи!"))))
             """
             "Код работает на всех платформах!")
-        (test
-            "test/pht/cpp/app"
-            "test/pht/jvm/app")))
+        (test "test/pht/jvm/app")))

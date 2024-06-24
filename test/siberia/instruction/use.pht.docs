@@ -1,22 +1,5 @@
 (category "use"
     (instr
-        (long "use")
-        (desc """
-            Инструкция использования модулей в глобальном контексте.
-            @br(/siberia/use/instructions/use-ctx.html){Не рекомендуется к использованию!}
-            """)
-        (usage
-            "(use name0 nameN)"
-            [["name*"] "модули."])
-        (example
-            """
-            (progn
-                (use pht)
-                (app-fn
-                    (println "Внимание! Обнаружен опасный код!")))
-            """
-            "Код работает на всех платформах!"))
-    (instr
         (long "use-ctx")
         (desc "Инструкция использования модулей в локальном контексте блока.")
         (usage

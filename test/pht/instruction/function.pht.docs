@@ -123,6 +123,39 @@
             "Код работает на всех платформах!")
         (test "test/pht/jvm/ext-fn"))
     (instr
+        (long  "def-gen-func")
+        (short "gfn")
+        (desc  "Определение автогенерируемого метода.")
+        (usage
+            "(def-gen-func name typeR [[arg typeA] [arg typeA]] expr0 exprN)"
+            [["name"]  "имя."]
+            [["typeR"] "возвращаемый тип."]
+            [["arg"]   "имя аргумента."]
+            [["typeA"] "тип аргумента."]
+            [["expr*"] "тело."])
+        (usage
+            "(gfn name typeR [[arg typeA] [arg typeA]] expr0 exprN)"
+            [["name"]  "имя."]
+            [["typeR"] "возвращаемый тип."]
+            [["arg"]   "имя аргумента."]
+            [["typeA"] "тип аргумента."]
+            [["expr*"] "тело."])
+        (example
+            """
+            (use-ctx pht
+                (cls TestA [^Object] (@static
+                    (gfn foo ^auto [[a ^auto][b ^auto]]
+                        (+ a b))))
+                (app-fn
+                    (println (#foo ^TestA 12 21))
+                    (println (#foo ^TestA 12 21.12))
+                    (println (#foo ^TestA 12.21 21))
+                    (println (#foo ^TestA 12.21 21.12))
+                    (println (#foo ^TestA "Слава " "России!"))))
+            """
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/ext-fn"))
+    (instr
         (long  "lambda")
         (short "fn")
         (desc  "Создаёт безымянную функцию, возвращает ссылку на неё.")

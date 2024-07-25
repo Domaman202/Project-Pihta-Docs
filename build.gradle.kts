@@ -11,8 +11,8 @@ repositories {
 }
 
 dependencies {
-    api("ru.DmN.siberia:Project-Siberia:1.20.1")
-    api("ru.DmN.pht:Project-Pihta:1.23.2")
+    api("ru.DmN.siberia:Project-Siberia:1.23.1")
+    api("ru.DmN.pht:Project-Pihta:1.25.2")
 }
 
 java {

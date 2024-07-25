@@ -13,7 +13,7 @@ enum class Platforms : IPlatform {
     companion object {
         init {
             IPlatform.PLATFORMS += HTML
-            TypesProvider.add(HTML, VoidTypesProvider())
+            TypesProvider.add(HTML, ::VoidTypesProvider)
         }
     }
 }

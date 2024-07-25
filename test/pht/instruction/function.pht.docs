@@ -121,7 +121,38 @@
                         (#log "Славься Русь!"))))
             """
             "Код работает на всех платформах!")
-        (test "test/pht/jvm/ext-fn"))
+        (test "test/pht/jvm/efn"))
+    (instr
+        (long  "to-ext-func")
+        (short "to-efn")
+        (desc  "Преобразовывает уже существующий метод в метод-расширение.")
+        (usage
+            "(to-ext-func typeD name [typeA0 typeAN])"
+            [["typeD"]  "тип в котором определён метод."]
+            [["name"]   "имя метода."]
+            [["typeA*"] "тип аргумента."])
+        (usage
+            "(to-ext-func . name [type0 typeN])"
+            [["name"]   "имя метода."]
+            [["type*"] "тип аргумента."])
+        (usage
+            "(to-efn typeD name [typeA0 typeAN])"
+            [["typeD"]  "тип в котором определён метод."]
+            [["name"]   "имя метода."]
+            [["typeA*"] "тип аргумента."])
+        (usage
+            "(to-efn . name [type0 typeN])"
+            [["name"]   "имя метода."]
+            [["type*"] "тип аргумента."])
+        (example
+            """
+            (use-ctx pht
+                (app
+                    (defn foo ^void [[this ^String]] (println this))
+                    (to-efn . foo [^String])
+                    (app-fn (#foo "Слава России!"))))
+            """)
+        (test "test/pht/jvm/to-efn"))
     (instr
         (long  "def-gen-func")
         (short "gfn")
@@ -154,7 +185,7 @@
                     (println (#foo ^TestA "Слава " "России!"))))
             """
             "Код работает на всех платформах!")
-        (test "test/pht/jvm/ext-fn"))
+        (test "test/pht/jvm/gfn"))
     (instr
         (long  "lambda")
         (short "fn")

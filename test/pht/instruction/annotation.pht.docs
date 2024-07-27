@@ -110,6 +110,32 @@
             """
             "Код работает на всех платформах!"))
     (instr
+        (long  "@to-ext-func")
+        (short "@to-efn")
+        (desc  """
+            Аннотация @b{extension-function}.
+            Применяется к выражениям типа:
+            1. @b{метод}
+            """)
+        (usage
+            "(@to-ext-func expr0 exprN)"
+            [["expr*"] "выражения."])
+        (usage
+            "(@to-efn expr0 exprN)"
+            [["expr*"] "выражения."])
+        (example
+            """
+            (use-ctx pht
+                (app
+                    (@to-efn
+                    (defn foo ^void [[text ^String]]
+                        (println text)))
+                    (app-fn
+                        (#foo "Hi!"))))
+            """
+            "Код работает на всех платформах!")
+        (test "test/pht/jvm/to-efn-b"))
+    (instr
         (long "@varargs")
         (desc """
             Аннотация @b{varargs}.

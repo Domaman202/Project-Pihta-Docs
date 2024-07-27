@@ -148,11 +148,13 @@
             """
             (use-ctx pht
                 (app
-                    (defn foo ^void [[this ^String]] (println this))
+                    (defn foo ^void [[this ^String]]
+                        (println this))
                     (to-efn . foo [^String])
-                    (app-fn (#foo "Слава России!"))))
+                    (app-fn
+                        (#foo "Слава России!"))))
             """)
-        (test "test/pht/jvm/to-efn"))
+        (test "test/pht/jvm/to-efn-a"))
     (instr
         (long  "def-gen-func")
         (short "gfn")

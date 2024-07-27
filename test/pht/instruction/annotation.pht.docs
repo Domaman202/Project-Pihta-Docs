@@ -108,7 +108,12 @@
                     (app-fn
                         (#foo .))))
             """
-            "Код работает на всех платформах!"))
+            "Код работает на всех платформах!")
+        (test
+            "test/pht/jvm/inline-a"
+            "test/pht/jvm/inline-b"
+            "test/pht/jvm/inline-c"
+            "test/pht/jvm/inline-d"))
     (instr
         (long  "@to-ext-func")
         (short "@to-efn")

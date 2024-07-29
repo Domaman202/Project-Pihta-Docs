@@ -271,7 +271,7 @@
     (instr
         (long  "block-get")
         (short "bget")
-        (desc "Получает значение @b{переменной} именованного блока.")
+        (desc  "Получает значение @b{переменной} именованного блока.")
         (usage
             "(block-get name block)"
             [["name"]  "имя переменной."]
@@ -280,4 +280,76 @@
             "(bget name block)"
             [["name"]  "имя переменной."]
             [["block"] "имя блока."])
-        (test "test/pht/jvm/named-block")))
+        (test "test/pht/jvm/named-block"))
+    (instr
+        (long  "over-set")
+        (short "oset")
+        (desc  """
+            Инструкция перезаписи значения и возврата результата.
+            Схожа с операторами @bi{x=} из других языков.
+            Берёт значение, вставляет его в выбранную позицию выражения и выполняет его, возвращает результат.
+            """)
+        (usage
+            "(over-set get pos expr)"
+            [["get"]  "Переменная | Поле."]
+            [["pos"]  "Позиция."]
+            [["expr"] "Выражение."])
+        (usage
+            "(oset get pos expr)"
+            [["get"]  "Переменная | Поле."]
+            [["pos"]  "Позиция."]
+            [["expr"] "Выражение."])
+        (example """
+            (use-ctx
+                (app-fn
+                    (def-set i 1.0)
+                    (println (over-set i 0 (/ 2)))
+                    (println i)))
+            """)
+        (example """
+            (use-ctx
+                (app-fn
+                    (def-set i 1.0)
+                    (println (over-set i 1 (/ 2)))
+                    (println i)))
+            """)
+        (test
+            "test/pht/jvm/over-set-a"
+            "test/pht/jvm/over-set-b"
+            "test/pht/jvm/over-set-c"))
+    (instr
+        (long  "over-set-post")
+        (short "osetp")
+        (desc  """
+            Инструкция перезаписи значения и возврата исходного значения.
+            Схожа с операторами @bi{x=} из других языков.
+            Берёт значение, вставляет его в выбранную позицию выражения и выполняет его, возвращает исходное значение.
+            """)
+        (usage
+            "(over-set-post get pos expr)"
+            [["get"]  "Переменная | Поле."]
+            [["pos"]  "Позиция."]
+            [["expr"] "Выражение."])
+        (usage
+            "(osetp get pos expr)"
+            [["get"]  "Переменная | Поле."]
+            [["pos"]  "Позиция."]
+            [["expr"] "Выражение."])
+        (example """
+            (use-ctx
+                (app-fn
+                    (def-set i 8.0)
+                    (println (over-set-post i 0 (/ 4)))
+                    (println i)))
+            """)
+        (example """
+            (use-ctx
+                (app-fn
+                    (def-set i 8.0)
+                    (println (over-set-post i 1 (/ 4)))
+                    (println i)))
+            """)
+        (test
+            "test/pht/jvm/over-set-a"
+            "test/pht/jvm/over-set-b"
+            "test/pht/jvm/over-set-c")))

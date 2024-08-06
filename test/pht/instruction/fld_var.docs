@@ -56,12 +56,37 @@
             [["value"] "значение."])
         (test "test/pht/jvm/def-var"))
     (instr
+        (long "def-fld")
+        (desc "Определение поля.")
+        (usage
+            "(def-fld [[name type] [name type]])"
+            [["name"] "имя."]
+            [["type"] "тип."])
+        (test "test/pht/jvm/fld-b"))
+    (instr
         (long "fld")
-        (desc "Определение поля, включая геттер и сеттер.")
+        (desc """
+            Определение поля, включая геттер и сеттер.
+            При определении поля:
+            1. @b{в классе} - вы устанавливаете его тип.
+            2. @b{в конструкторе} - вы устанавливаете его значение.
+            """)
         (usage
             "(field [[name type] [name type]])"
             [["name"] "имя."]
             [["type"] "тип."])
+        (usage
+            "(field [[name value] [name value]])"
+            [["name"]  "имя."]
+            [["value"] "значение."])
+        (usage
+            "(fld [[name type] [name type]])"
+            [["name"] "имя."]
+            [["type"] "тип."])
+        (usage
+            "(fld [[name value] [name value]])"
+            [["name"]  "имя."]
+            [["value"] "значение."])
         (example
             """
             (use-ctx pht
@@ -74,7 +99,8 @@
                     (println o/i)))
             """
             "Код работает на всех платформах!")
-        (test "test/pht/jvm/fld-field"))
+        (test "test/pht/jvm/fld-a")
+        (test "test/pht/jvm/fld-b"))
     (instr
         (long  "enum-fld")
         (short "efld")
